@@ -5,6 +5,7 @@ Guidelines for this course:
 - apart from that, the course must be complete, self contained, refers to TC++PL, 3ed
 - for now assume C++98 by default, occationally mention C and C++0x
 - when C++0x is ready and gcc can support it, course should be rewritten into using C++0x
+- students will/should have a copy of TC++PL, 3ed
 
 Agenda:
 
@@ -28,6 +29,101 @@ Day 2:
 1500 Break
 1515 Summary
 1600 End of course
+
+Outline:
+
+* 01 Introduction to C++ (30 min)
+
+- example: undefined behaviour, evaluation order, sequence points
+- reasons for using C++
+- usage of C++
+- do not compare C++ with C, rather C++ with eg Java
+- bweare multi-paradigm
+- the spirit of C++
+- Hello C++
+
+* Ex1 - Hello World (15 min incl coffee break)
+
+- edit, compile, link C++ code
+- just an enviornment check
+
+* 02 A Brief Tour of C++ (30 min)
+
+- start with sunny story, accelerated C++ style
+- don't initally worry about const & eg
+- use tests with, not iostream
+
+* 03 Functions, Operators & Data Structures (60 min)
+
+- overloading
+- default arguments
+- references, pass by copy vs pass by ref
+- template functions
+
+* Ex2 - Date or Phonebook (90 min incl lunch)
+
+- use structure, functions working on structure through pointer (the C way)
+- operators
+- templated functions
+- test driven development
+
+* 04 Objects, Classes and Lifetimes
+
+- drive class design from object usage (ala TDD)
+- ctor, dtor
+- use cerr for debug/diag output
+- 3 storage classes
+- be opinionated about stack usage and bold pointers
+- copy constructor and and assignment operator
+- smart pointers
+
+* 05 Control Flow, Iterators and Exceptions (60 min)
+
+- exceptions - lifetime, use of predefined, handle & throw
+- use of predefined iterators (for_each, copy, etc)
+
+* Ex3 - Recently Used List (120 min incl homework)
+
+- use iterators, use control flow
+- discover patterns, language constructs, standard library 
+
+* 06 Program Organization and Dependency Management
+
+- koenig / ADL
+- makefile and compiler flags
+- header files and source files (header guards)
+- namespace, "packages", using directives
+- fwd declarations
+- dependency injections
+
+* 07 Standard Libraries
+
+- examples of usage from:
+  - containers and iterators
+  - algorithmes
+  - string, iostream, stringstream
+  - pair
+  - functional
+  - the C library
+  - mention boost, tr1 and C++0x
+
+* Ex4 - Poker Hands (120 min incl lunch)
+
+- free form
+- pairs/teams describe their solutions to everyone
+- avoid quiz, give strong hints about how to solve it
+- perhaps a C implementation with tests, and ask to refactor?
+
+08 Object Oriented Programming in C++ (120 min)
+
+- encapsualation, abstractions
+- separation of concerns
+- LSP, PFA, SRP, patterns
+
+09 Summary (45)
+
+- quick recap of everything
+
 
 Attic:
 - pointers, references, arrays
