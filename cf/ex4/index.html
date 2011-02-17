@@ -1,0 +1,129 @@
+<html>
+<head>
+<style>
+code {
+	background-color: #f9f9f9;
+}
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+</style>
+<title>Exercise 4: Functions, Program Structure and Preprocessor</title>
+</head>
+<body>
+
+<h3>Exercise 4: Functions, Program Structure and Preprocessor</h3>
+
+<h4>1. Abstract datatype in C </h4>
+
+Consider the a header file like this (<code>date.h</code>): 
+<pre>
+#include &lt;stdbool.h&gt;
+
+typedef struct date date;
+
+date * date_create(int year, int month, int day);
+void date_destroy(date *);
+bool date_equal(const date *, const date *);
+void date_print(const date *, void printer(const char *));
+</pre>
+
+where a typical usage might look like this (<code>date_main.c</code>):
+<pre>
+#include "date.h"
+#include &lt;stdio.h&gt;
+
+void my_printer(const char * message) 
+{
+    puts(message);
+}
+
+int main(void) 
+{
+    date * d1 = date_create(2008,3,6);
+    printf("d1 = "); date_print(d1, my_printer);
+
+    date * d2 = date_create(2008,3,6);
+    printf("d2 = "); date_print(d2, my_printer);
+
+    date * d3 = date_create(2008,3,7);
+    printf("d3 = "); date_print(d3, my_printer);
+
+    printf("d1 is %sequal to d2\n", date_equal(d1, d2) ? "" : "not ");
+    printf("d2 is %sequal to d3\n", date_equal(d2, d3) ? "" : "not ");
+
+    date_destroy(d3);
+    date_destroy(d2);
+    date_destroy(d1);
+}
+</pre>
+
+Implement the interface described by <code>date.h</code>, in a
+file <code>date.c</code>. 
+<p>
+Try to make a solid implementation. Write
+good unit tests to speed up the development process.
+<p>
+
+<h4>Extra:</h4> 
+
+Try to do a similar implementation, but where the client is
+responsible for allocating/deallocating memory. Eg, consider an
+interface like this (<code>date2.h</code>):
+
+<pre>
+#include &lt;stdbool.h&gt;
+
+typedef struct date date;
+
+enum { size_of_date = 20 };
+
+date * date_init(void * raw_mem, int year, int month, int day);
+bool date_equal(const date *, const date *);
+void date_print(const date *, void printer(const char *));
+</pre>
+
+That might be used like this (<code>date2_main.c</code>):
+<pre>
+#include "date2.h"
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+static void my_printer(const char * message) 
+{
+    puts(message);
+}
+
+int main(void) 
+{
+    static char global_buffer[size_of_date];
+    char local_buffer[size_of_date];
+    char * dynamic_buffer = malloc(size_of_date);
+
+    date * d1 = date_init(global_buffer, 2008, 3, 6);
+    date * d2 = date_init(local_buffer, 2008, 3, 6);
+    date * d3 = date_init(dynamic_buffer, 2008, 3, 7);
+
+    printf("d1 = "); date_print(d1, my_printer);
+    printf("d2 = "); date_print(d2, my_printer);
+    printf("d3 = "); date_print(d3, my_printer);
+
+    printf("d1 is %sequal to d2\n", date_equal(d1, d2) ? "" : "not ");
+    printf("d2 is %sequal to d3\n", date_equal(d2, d3) ? "" : "not ");
+
+    free(dynamic_buffer);
+
+    return 0;
+}
+</pre>
+
+Beware, there are some really tricky things to consider for 
+portability and well-defined behaviour. 
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Exercise 2: Types, Operators, Expressions and Control Flow</title>
+<style>
+code {
+	background-color: #f9f9f9;
+}
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+</style>
+</head>
+<body>
+
+<h3>Exercise 2: Types, Operators, Expressions and Control Flow</h3>
+
+<h4>1. Counting Bits</h4>
+
+Write a program that counts the number of set bits in a
+given integer. Start by writing some unit tests.
+
+<pre>
+$ bitcount 1
+1
+$ bitcount 14
+3
+$ bitcount 256
+1
+</pre>
+
+if no argument is given print a diagnostic message as follows:
+
+<pre>
+$ bitcount
+usage: bitcount value
+</pre>
+
+<h4>2. Calculate statistics over some numbers</h4>
+
+Write a program that calculate some simple statistics 
+for a sequence of integers. Eg,
+
+<pre>
+$ cat foo.dat
+4
+9
+3
+$ cat foo.dat | calcstat 
+n=3, average=5.333333, min=3, max=9
+</pre>
+
+Write unit tests when developing the code.
+<p>
+
+Extra: Extend the calcstat program to accept an
+argument, a file name, so that you can do:
+<pre>
+$ calcstat foo.dat
+n=3, average=5.333333, min=3, max=9
+</pre>
+
+Hint: here is an example of a program that read and
+prints int values from a file 
+<a href="printvalues.c">printvalues.c</a>
+
+</body>
+</html>

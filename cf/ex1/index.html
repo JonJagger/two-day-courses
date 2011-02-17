@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Exercise 1: A Brief Tour</title>
+</head>
+<body>
+
+<h3>Exercise 1: A Brief Tour</h3>
+
+<h4>1. Hello World!</h4>
+
+Compile and run a program that prints out "Hello World!".
+
+<h4>2. Print Arguments</h4>
+
+Write a program that prints out all the arguments given at
+the command line.
+
+<h4>3. Linking together a program</h4>
+
+Declare a function 'void sayhello(void);' in a header
+file, sayhello.h, then implement it in sayhello.c.
+Compile sayhello.c into sayhello.o
+<p>
+Then write a main.c which includes sayhello.h and
+calls the function. Compile main.c into main.o.
+<p>
+Link sayhello.o and main.o together to get an executable that
+you can run.
+<p>
+Eg,
+<pre>
+  gcc -c sayhello.c
+  gcc -c main.c
+  gcc -o main sayhello.o main.o
+</pre>
+
+
+
+</body>
+</html>

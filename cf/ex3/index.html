@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Exercise 3: Pointers, Arrays and Structures</title>
+<style>
+code {
+	background-color: #f9f9f9;
+}
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+</style>
+</head>
+<body>
+
+<h3>Exercise 3: Pointers and Arrays</h3>
+
+<h4>1. Working with structures </h4>
+
+Write a date structure, eg something like:
+<pre>
+struct date
+{
+    int year;
+    int month;
+    int day;
+};
+</pre>
+
+Make a function <code>date_print()</code> that can print such
+a date object. Create three date objects, one with
+global static storage class, one with local automatic
+storage class, and one allocated on the free store 
+(malloc). Practice using designators and struct compound
+literals.
+<p>
+Write a <code>date_equal()</code> function that takes two date 
+objects and returns true if they are equal.
+<p>
+Try different ways of passing date objects to
+<code>date_print()</code> and <code>date_equal()</code>.
+
+<h4>2. Write a function that adds two vectors</h4>
+
+Write a function <code>addvec()</code> that can be used like this:
+<pre>
+double a[4] = {4.2,5.9,3.2,4.5};
+double b[4] = {8.9,-2.1,0.3,5.6};
+double c[4];
+addvec(4, c, b, a); // c = b+a;
+</pre>
+
+Try to measure how fast this function is for adding large vectors.
+Try different things to optimize your code. Does using the <code>restrict</code>
+type qualifier have any effect?
+
+
+</body>
+</html>

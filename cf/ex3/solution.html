@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Solution 3: Pointers, Arrays and Structures</title>
+<style>
+code {
+	background-color: #f9f9f9;
+}
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+</style>
+</head>
+<body>
+
+<h3>Solution 3: Pointers, Arrays and Structures</h3>
+
+<h4>1. Working with structures </h4>
+
+Given:
+<pre>
+typedef struct 
+{
+    int year;
+    int month;
+    int day;
+} date;
+</pre>
+
+<code>date_print()</code> and <code>date_equal()</code> might be 
+implemented like this (but you might like to consider how you
+could test this version of date_print):
+
+<pre>
+void date_print(const date * when) 
+{
+    printf("%04d-%02d-%02d\n", when->year, when->month, when->day);
+}
+
+bool date_equal(const date * lhs, const date * rhs) 
+{
+    return lhs->year  == rhs->year &&
+           lhs->month == rhs->month &&
+           lhs->day   == rhs->day;
+}
+</pre>
+
+Notice how the date objects are passed into the functions. You
+could also pass in by value like this:
+<pre>
+void date_print(date when) 
+{
+    printf("%04d/%02d/%02d\n", when.year, when.month, when.day);
+}
+</pre>
+but this might be inefficient for large structures.
+<p>
+Here are different ways of creating date objects:
+<pre>
+// ...
+date aggregate = { 2008, 3, 6 };
+// ...
+date designators = { .year = 2008, .month = 3, .day = 6 };
+// ...
+date * dynamic = (date *)malloc(sizeof(*dynamic));
+dynamic->year = 2008;
+dynamic->month = 3;
+dynamic->day = 8;
+// ...
+</pre>
+
+<p>
+Take a look at a complete 
+<a href="date.h">date.h</a> and
+<a href="date.c">date.c</a> and
+<a href="date_main.c">date_main.c</a>
+
+
+<h4>2. Write a function that adds two vectors</h4>
+
+The addvec function itself might look like this:
+<pre>
+void addvec(int n, 
+            double * restrict a, 
+            const double * restrict x, 
+            const double * restrict y) 
+{
+    for (int i = 0; i != n; i++)
+    {
+        a[i] = x[i] + y[i];
+    }
+}
+</pre>
+
+Notice how we use the keyword <code>restrict</code> to specify that
+the vectors given to <code>addvec()</code> do not overlap. We also
+specify that the values in the vectors pointed to by <code>x</code>
+and <code>y</code> can not be changed. This will give the compiler
+enough hints to optimize the code better than if you did not give that
+guarantee.
+<p>
+Here is some <a href="addvec.c">sample code</a> that 
+demonstrates how you might write a program to use during
+development of the <code>addvec()</code> function.
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>Solution 1: A Brief Tour</title>
+<style>
+code {
+	background-color: #f9f9f9;
+}
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+</style>
+</head>
+<body>
+
+<h3>Solution 1: A Brief Tour</h3>
+
+<p>
+
+Here are some possible solutions to the exercise. But first
+of all...
+
+<p>
+
+The suggested commands for compiling and running depends
+of course on the compiler that you are using. If you are 
+using gcc then you might want to compile like this:
+
+<pre>
+gcc -std=c99 -Wall -Wextra -pedantic foo.c
+./a.out
+</pre>
+
+Try <code>gcc --help</code> and <code>man gcc</code> for more
+options. Or if you are using a compiler from Microsoft you might 
+want to consider something like:
+
+<pre>
+cl /Wall foo.c 
+foo.exe
+</pre>
+
+and do <code>cl /?</code> for more options.
+
+<h4>1. Hello World!</h4>
+
+<pre>
+/* hello.c */
+
+#include &lt;stdio.h&gt;
+
+int main(void) 
+{
+    puts("Hello World!");
+    return 0;
+}
+</pre>
+
+To compile and run:
+<pre>
+gcc hello.c
+./a.out
+</pre>
+
+Here is a complete code sample: <a href="hello.c">hello.c</a>.
+
+<h4>2. Print Arguments</h4>
+
+<pre>
+/* printargs.c */
+
+#include &lt;stdio.h&gt;
+
+int main(int argc, char * argv[]) 
+{
+    for (int at = 0; at != argc; ++at) 
+        printf("argv[%d]=%s\n", at, argv[at]);
+    return 0;
+}
+</pre>
+
+To compile and run:
+<pre>
+gcc -o printargs printargs.c
+./printargs foo bar
+</pre>
+
+Here is a complete code sample: <a href="printargs.c">printargs.c</a>.
+
+<h4>3. Linking together a program</h4>
+
+The header file:
+<pre>
+/* sayhello.h */
+
+void sayhello(void);
+</pre>
+Notice that this is the proper way of writing a prototype, it
+is acceptable but not entirely correct to do 'void sayhello();'
+
+<p>
+The implementation:
+<pre>
+/* sayhello.c */
+
+#include "sayhello.h"
+#include &lt;stdio.h&gt;
+
+void sayhello(void) 
+{
+    puts("Hello");
+}
+</pre>
+
+The order of include statements is important. First you should include
+your own header file, then include header files from your project and
+then from the platform and standard library. The main reason for this
+is that it increases that chance of making selfcontained headerfiles.
+
+<p>
+The main function
+<pre>
+/* main.c */
+
+#include "sayhello.h"
+
+int main(void) 
+{
+    sayhello();
+}
+</pre>
+
+Notice that there is no return statement at the end of the main
+function. Is that valid code?
+
+<p>
+To compile and link
+<pre>
+  gcc -c sayhello.c
+  gcc -c main.c
+  gcc -o main sayhello.o main.o
+</pre>
+
+Here are complete code samples: <a href="main.c">main.c</a>,
+<a href="sayhello.h">sayhello.h</a> and <a href="sayhello.c">sayhello.c</a>.
+
+</body>
+</html>

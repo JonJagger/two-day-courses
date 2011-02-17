@@ -1,0 +1,58 @@
+<html>
+<head>
+<style>
+code {
+	background-color: #f9f9f9;
+}
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+</style>
+<title>Solution 4: Functions, Program Structure and Preprocessor</title>
+</head>
+<body>
+
+<h3>Solution 4: Functions, Program Structure and Preprocessor</h3>
+
+<h4>1. Abstract datatype in C </h4>
+
+Here is a possible solution:
+<ul>
+<li> <a href="date.h">date.h</a> 
+<li> <a href="date.c">date.c</a>
+<li> <a href="date_test.c">date_test.c</a>
+<li> <a href="usedate.c">usedate.c</a>
+</ul>
+
+While developing the code you might want to do:
+<pre>
+gcc -std=c99 date.c date_test.c && ./a.out
+gcc -std=c99 date.c usedate.c && ./a.out
+</pre>
+
+Notice in particular the techniques used to make this implementation
+testable. Also notice how little the user of the date struct needs
+to know about the internal state and implementation. 
+
+<p>
+
+Here is sample code for the alternative solution where the client
+is controlling the memory:
+<ul>
+<li> <a href="cta.h">cta.h</a>
+<li> <a href="date2.h">date2.h</a>
+<li> <a href="date2.c">date2.c</a>
+<li> <a href="date2_test.c">date2_test.c</a>
+<li> <a href="usedate2.c">usedate2.c</a>
+</ul>
+
+Notice how simple the unittesting becomes. Also take a look at 
+the creative use of preprocessor macros to provide some kind
+of compile time assertions.
+
+</body>
+</html>
