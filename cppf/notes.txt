@@ -1,0 +1,64 @@
+Notes for the C++ Foundation course
+
+Guidelines for this course:
+- assume that students have done the "C Foundation" course about 6 months ago
+- apart from that, the course must be complete, self contained, refers to TC++PL, 3ed
+- for now assume C++98 by default, occationally mention C and C++0x
+- when C++0x is ready and gcc can support it, course should be rewritten into using C++0x
+
+Agenda:
+
+Day 1:
+0900 Introduction
+0930 Exercise / break
+0945 A Brief Tour of C++
+1030 Functions, Operators & Data Structures
+1130 Exercise / lunch
+1300 Objects, Classes and Lifetimes
+1400 Control Flow and Exceptions
+1500 Exercise/Homework (Recently used list)
+1600 End of day
+
+Day 2:
+0900 Excercise/Homework...
+0915 Program Organization and Dependency Management
+1015 Standard Libraries
+1100 Exercise / lunch
+1300 Object Oriented Programming in C++
+1500 Break
+1515 Summary
+1600 End of course
+
+Attic:
+- pointers, references, arrays
+- namespaces, exceptions, 
+- brefly about templates
+- class hierarchies
+- sufficient STL
+- sufficient OO
+- memory management (new vs malloc, placement new, ctor/dtors)
+- dependency management, header organization
+- iostream
+- strings
+- iterators, containers, algorithms, function objects
+- C++ culture and efficiency
+- Agenda:
+Functions and Operators (overloading, def arg, inlining, references, operators, func templates)
+exercise (operator exercise, date)
+Object Lifetimes (memory mgmt, using, smartptrs, stack based programming
+
+C++ Object Oriented Programming
+- patterns
+- OO principles
+ - encapsulation
+ - abstraction
+ - separation of concerns
+ - single responsibility principle
+ - liskov's substitution principle, general substitution
+ - parameterize from above
+- abstraction with efficiency
+- inheritance, mechanics and techniques
+- object life-times (smart pointers, stack based programming)
+- value objects (operator overloading, conversions)
+- containers
+- encapsulation practices
