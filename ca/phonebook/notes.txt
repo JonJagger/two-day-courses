@@ -1,0 +1,83 @@
+Phone Book Exercise
+
+A phone number P1 is unreachable with respect to P2, if P2 is a prefix
+of P1.o Here is an example of an inconsitent phonebook because not all
+numbers are reachable:
+
+  912876, 911, 912788, 911345, 901223
+
+Eg, since 911 is a prefix of of 911345, and therefor when dialing the
+latter number you reach 911 instead.
+
+Your task is to create a phone book module (a collection of phone
+numbers). A phone book must maintain itself in a consistent state;
+all the phone numbers it contains must be reachable.
+
+---
+
+
+
+
+phonebook_
+  insert  // insert a number into the phonebook
+  erase   // erase a number from the phonebook
+  clear   // clear the whole phone book
+  size
+  
+
+// C++ 
+  phonebook pb(99999);
+  phonebook pb(myAllocator);
+  phonebook pb(99999, myAllocator);
+  phonebook pb(myOtherPhoneBook);
+  
+  phonebook pb(long * phonebook_memory, size_t max_size);
+  // --> m
+
+void explore_first_use(void)
+{
+        phone_book jons = { ... };
+        phone_number jubilee = { "354192" };
+        assert(phone_book_size(&jons) == 0);
+        phone_book_insert(&jons, &jubilee);
+        assert(phone_book_size(&jons) == 1);
+}
+
+
+struct phone_number
+{
+   long value;
+   //char * value;
+   char value[32];
+};
+struct phone_book
+{
+    phone_number * numbers;
+    size_t max_size;
+    size_t size;
+};
+
+phone_number numbers[64];
+phone_book * jons = phone_book_init_phone_book(numbers, 64);
+assert(phone_book_size(jons) == 0);
+phone_number * olve = phone_book_create_phone_number_from_long(jons,90093309);
+//phone_number olve = phone_book_create_phone_number_from_string(jons,"90093309");
+bool inserted = phone_book_insert(jons, olve);
+assert(inserted);
+assert(phone_book_size(jons) == 1);
+phone_book_destroy(jons);
+
+
+
+
+ 
+
+  
+
+
+
+
+
+
+
+
