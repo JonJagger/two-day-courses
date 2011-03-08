@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>Exercise 1: Hello C++!</title>
+<style>
+code {
+	background-color: #f9f9f9;
+}
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+</style>
+</head>
+<body>
+
+<h3>Exercise 1: Hello C++!</h3>
+
+<h4>1. Compile, link and run Hello World!</h4>
+
+This exercise is just to check that your development environment is
+working.
+<p>
+Type the following program into your editor:
+<pre>
+#include &lt;iostream&gt;
+
+int main()
+{
+    std::cout &lt;&lt; "Hello C++!\n";
+}
+</pre>
+Compile the source file to produce an object file. Eg,
+<pre>
+g++ -c -Wall -Wextra -pedantic hello.cpp
+</pre>
+Then link the object file to produce an executable file. Eg,
+<pre>
+g++ hello.o -o hello
+</pre>
+And finally execute it. Eg,
+<pre>
+./hello
+</pre>
+
+<h4>2. C++ programming styles (optional)</h4>
+
+This exercise is to demonstrate that there are many ways to write even
+a very simple C++ program. 
+<p>
+
+Consider a program that sorts and prints all its command line
+arguments. Below you see two versions of such a program. Both are
+written in perfect C++, their behaviour is identical, but as you see
+the implementation is slightly different.
+
+<pre>
+// argsort1.cpp - sort and print arguments
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+static int compare(const void * a, const void * b)
+{
+    return strcmp(*(char**)a, *(char**)b);
+}
+    
+int main(int argc, char * argv[])
+{
+    size_t i;
+    qsort(argv, argc, sizeof *argv, compare);
+    for (i=0; i&lt;argc; i++)
+        puts(argv[i]);
+    return 0;
+}
+</pre>
+vs
+<pre>
+// argsort2.cpp - sort and print arguments
+#include &lt;iostream&gt;
+#include &lt;iterator&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+
+int main(int argc, char * argv[])
+{
+    std::vector&lt;std::string&gt; args(argv, argv + argc);
+    std::sort(args.begin(), args.end());
+    std::ostream_iterator&lt;std::string&gt; out_it(std::cout,"\n");
+    std::copy(args.begin(), args.end(), out_it);
+}
+</pre>
+
+Please discuss within your group while comparing the two different
+implementations above. By just considering the source code, what are
+the pros and cons of <a href="argsort1.cpp"><code>argsort1.cpp</code></a>
+vs <a href="argsort1.cpp"><code>argsort2.cpp</code></a>?
+
+<h4>3. Compile time and object file size (optional)</h4>
+
+This exercise is to see the effect of using the more 
+advanced language features in C++ vs the more primitive
+stuff inherited from C.
+<p>
+Consider these C++ implementations above. Compare their compile time,
+the size of the object files and the size of the final executables. Eg,
+<pre>
+time g++ -O2 -c argsort1.cpp
+time g++ -O2 -c argsort2.cpp
+ls -al argsort?.o
+time g++ -O2 -o argsort1 argsort1.o
+time g++ -O2 -o argsort2 argsort2.o
+ls -al argsort?
+</pre>
+How do you explain the difference? 
+<p>
+Take also a look at the output from the precompiler and the number of
+header files that was opened. Eg,
+<pre>
+g++ -O2 -E argsort1.cpp | wc
+g++ -O2 -E argsort2.cpp | wc
+g++ -O2 -H argsort1.cpp 2&gt;&1 | wc -l
+g++ -O2 -H argsort2.cpp 2&gt;&1 | wc -l
+</pre>
+Does this reveal some interesting information? Please discuss within
+your group.
+
+<h4>Resources</h4>
+
+<ul>
+<li> <a href="hello.cpp"><code>hello.cpp</code></a>
+<li> <a href="argsort.cpp"><code>argsort1.cpp</code></a>
+<li> <a href="argsort2.cpp"><code>argsort2.cpp</code></a>
+<li> <a href="Makefile"><code>Makefile</code></a>
+</ul>
+
+</body>
+</html>
