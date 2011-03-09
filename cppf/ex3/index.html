@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Exercise 3: Recently Used List</title>
+<style>
+code {
+	background-color: #f9f9f9;
+}
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+</style>
+</head>
+<body>
+
+<h3>Exercise 3: Recently Used List</h3>
+
+<h4>1. Write a somewhat reusable container in C++</h4>
+
+This is a type of container that might be useful for a GUI menu
+where you want to show the most recently edited files.
+<p>
+Write a container <code>recently_used_list</code> in
+namespace <code>mylib</code> where you can add strings, and when
+iterating over the elements in the list there should be no duplicates,
+and the first element should be the most recently added string, the
+next should be the next most recently added string, and so on. If the
+container has a max_size, the oldest item should just drop off the
+list.
+<p>
+Here is an example of how such a container might be used:
+<pre>
+...
+recently_used_list rul(4);
+assert(rul.size() == 0);
+rul.push_back("foo");
+rul.push_back("bar");
+rul.push_back("gaz");
+assert(rul.size() == 3);
+rul.push_back("bar");
+assert(rul.size() == 3);
+assert( *rul.begin() == "bar" );
+rul.push_back("faz");
+assert(rul.size() == 4);
+rul.push_back("baz");
+assert(rul.size() == 4);
+...
+</pre>
+<p>
+Important: Work together with your group and try to create a decent
+interface and implementation of such a container. Make sure you add
+some proper unit tests. Use this opportunity also to discuss good file
+organization, nice implementation techniques, C++ idioms and
+programming style.
+
+</body>
+</html>
