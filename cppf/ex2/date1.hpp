@@ -1,8 +1,6 @@
 #ifndef MYLIB_DATE_INCLUDED_
 #define MYLIB_DATE_INCLUDED_
 
-#include <stdbool.h>
-
 typedef struct mylib_date {
     int year;
     int month;
