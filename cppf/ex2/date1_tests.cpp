@@ -33,13 +33,10 @@ int main(void)
         assert( mylib_date_is_valid(to_date(1900,1,1)) );
         assert( mylib_date_is_valid(to_date(2099,12,31)) );
         assert( mylib_date_is_valid(to_date(2000,2,29)) );
-        assert( !mylib_date_is_valid(to_date(0,9,13)) );
         assert( !mylib_date_is_valid(to_date(1971,0,13)) );
         assert( !mylib_date_is_valid(to_date(1971,9,0)) );
         assert( !mylib_date_is_valid(to_date(1971,13,9)) );
         assert( !mylib_date_is_valid(to_date(1971,9,31)) );
-        assert( !mylib_date_is_valid(to_date(2100,1,1)) );
-        assert( !mylib_date_is_valid(to_date(1899,12,31)) );
     }
 
     // check offsets around a leap year day
@@ -57,7 +54,7 @@ int main(void)
         assert( mylib_date_diff(&d2,&d1) == 20 );
     }
 
-    // check boundaries and check that all dates in between are valid
+    // check that all dates between 1900/1/1 and 2099/12/31 are valid
     {
         mylib_date d1 = {1900,1,1};
         mylib_date d2 = {2099,12,31};
@@ -67,21 +64,6 @@ int main(void)
             assert(mylib_date_is_valid(&d));
         for (mylib_date d = d2; !mylib_date_is_equal(&d,&d1); mylib_date_offset(&d,-1))
             assert(mylib_date_is_valid(&d));
-    }
-
-    // check that moving outside of valid range really invalidates the date
-    {
-        mylib_date d1 = {1900,1,1};
-        mylib_date d2 = {2099,12,31};
-        mylib_date_offset(&d1,-1); 
-        assert(!mylib_date_is_valid(&d1));
-        mylib_date_offset(&d2,1); 
-        assert(!mylib_date_is_valid(&d2));
-
-        mylib_date_offset(&d1,1); 
-        assert(!mylib_date_is_valid(&d1));
-        mylib_date_offset(&d2,-1); 
-        assert(!mylib_date_is_valid(&d2));
     }
 
     // check that we are able to bubble sort an array of dates

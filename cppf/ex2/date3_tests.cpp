@@ -32,13 +32,10 @@ int main(void)
         try { mylib::date d(2099,12,31); } catch(std::out_of_range &) { assert(0); }
         try { mylib::date d(2000,2,29); } catch(std::out_of_range &) { assert(0); }
 
-        try { mylib::date d(0,9,13); assert(0); } catch(std::out_of_range &) {}
         try { mylib::date d(1971,0,13); assert(0); } catch(std::out_of_range &) {}
         try { mylib::date d(1971,9,0); assert(0); } catch(std::out_of_range &) {}
         try { mylib::date d(1971,13,9); assert(0); } catch(std::out_of_range &) {}
         try { mylib::date d(1971,9,31); assert(0); } catch(std::out_of_range &) {}
-        try { mylib::date d(2100,1,1); assert(0); } catch(std::out_of_range &) {}
-        try { mylib::date d(1899,12,31); assert(0); } catch(std::out_of_range &) {}
     }
 
     // check offsets around a leap year day
@@ -55,20 +52,12 @@ int main(void)
         assert( d2 - d1 == 20 );
     }
 
-    // check boundaries and we assume that all dates in between are valid
+    // check that days between 1900/1/1 and 2099/12/31 are correct
     {
         mylib::date d1(1900,1,1);
         mylib::date d2(2099,12,31);
         assert( d2 - d1 == 73048 );
         assert( d1 - d2 == -73048 );
-    }
-
-    // check that moving out of valid range creates exception
-    {
-        mylib::date d1(1900,1,1);
-        mylib::date d2(2099,12,31);
-        try { d1 -= 1; assert(0); } catch(std::out_of_range &) {}
-        try { d2 += 1; assert(0); } catch(std::out_of_range &) {}
     }
 
     // check that we are able to bubble sort an array of dates

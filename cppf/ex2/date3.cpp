@@ -19,8 +19,7 @@ namespace {
     }
 
     int is_valid(int year, int month, int day) {
-        return (year >= 1900 && year < 2100) &&
-            (month >= 1 && month <= 12) &&
+        return (month >= 1 && month <= 12) &&
             (day >= 1 && day <= days_in_month(year, month));
     }
 

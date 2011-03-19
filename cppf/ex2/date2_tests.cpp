@@ -26,13 +26,10 @@ int main(void)
         assert( mylib::date(1900,1,1).is_valid() );
         assert( mylib::date(2099,12,31).is_valid() );
         assert( mylib::date(2000,2,29).is_valid() );
-        assert( !mylib::date(0,9,13).is_valid() );
         assert( !mylib::date(1971,0,13).is_valid() );
         assert( !mylib::date(1971,9,0).is_valid() );
         assert( !mylib::date(1971,13,9).is_valid() );
         assert( !mylib::date(1971,9,31).is_valid() );
-        assert( !mylib::date(2100,1,1).is_valid() );
-        assert( !mylib::date(1899,12,31).is_valid() );
     }
 
     // check offsets around a leap year day
@@ -50,7 +47,7 @@ int main(void)
         assert( d2.diff(d1) == 20 );
     }
 
-    // check boundaries and check that all dates in between are valid
+    // check that all dates between 1900/1/1 and 2099/12/31 are valid
     {
         mylib::date d1(1900,1,1);
         mylib::date d2(2099,12,31);

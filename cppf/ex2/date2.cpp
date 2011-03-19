@@ -48,18 +48,14 @@ mylib::date::date(int year, int month, int day) :
 
 bool mylib::date::is_valid() const
 {
-    return (year >= 1900 && year < 2100) &&
-        (month >= 1 && month <= 12) &&
+    return (month >= 1 && month <= 12) &&
         (day >= 1 && day <= days_in_month(year, month));
 }
         
 void mylib::date::offset(int offset_in_days)
 {
-    if (is_valid()) {
-        mylib::date d = to_date(to_day_number(this) + offset_in_days);
-        if (d.is_valid())
-            *this = d;
-    }
+    mylib::date d = to_date(to_day_number(this) + offset_in_days);
+    *this = d;
 }
 
 int mylib::date::diff(const mylib::date & other) const
