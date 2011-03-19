@@ -1,22 +1,5 @@
 #include "date2.hpp"
 #include <cassert>
-#include <cstring>
-
-static void bubble_sort_dates(mylib::date * base, size_t number_of_elements)
-{
-    for(;;) {
-        bool swapped = false;
-        for (size_t i = 0; i < number_of_elements - 1; i++) 
-            if (base[i].diff(base[i+1]) > 0) {
-                mylib::date tmp = base[i];
-                base[i] = base[i+1];
-                base[i+1] = tmp;
-                swapped = true;
-            }
-        if (!swapped)
-            return;
-    }
-}
 
 int main(void)
 {
@@ -67,16 +50,6 @@ int main(void)
         assert(d1.is_valid());
         d2.offset(1);
         assert(d2.is_valid());
-    }
-
-    // check that we are able to bubble sort an array of dates
-    {
-        mylib::date dates[] = {mylib::date(2002,3,13), mylib::date(2005,4,20), mylib::date(1971,9,13), mylib::date(1970,5,1)};
-        bubble_sort_dates(dates, 4);
-        assert( dates[0].is_equal(mylib::date(1970,5,1)) );
-        assert( dates[1].is_equal(mylib::date(1971,9,13)) );
-        assert( dates[2].is_equal(mylib::date(2002,3,13)) );
-        assert( dates[3].is_equal(mylib::date(2005,4,20)) );
     }
 
 }

@@ -158,3 +158,11 @@ C++ Object Oriented Programming
 - value objects (operator overloading, conversions)
 - containers
 - encapsulation practices
+
+<ul>
+<i>
+If C gives you enough rope to hang yourself, C++ is a hardware 
+store with lots of helpful people ready to tie knots for you.
+</i>
+</ul>
+

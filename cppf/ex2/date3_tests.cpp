@@ -2,27 +2,6 @@
 #include <cassert>
 #include <stdexcept>
 
-bool operator<(const mylib::date & lhs, const mylib::date & rhs) {
-    return lhs - rhs < 0;
-}
-
-template <typename T>
-static void bubble_sort(T * base, size_t number_of_elements)
-{
-    for(;;) {
-        bool swapped = false;
-        for (size_t i = 0; i < number_of_elements - 1; i++) 
-            if (! (base[i] < base[i+1]) ) {
-                T tmp = base[i];
-                base[i] = base[i+1];
-                base[i+1] = tmp;
-                swapped = true;
-            }
-        if (!swapped)
-            return;
-    }
-}
-
 int main(void)
 {
     // checks valid and invalid dates
@@ -59,17 +38,4 @@ int main(void)
         assert( d2 - d1 == 73048 );
         assert( d1 - d2 == -73048 );
     }
-
-    // check that we are able to bubble sort an array of dates
-    {
-        mylib::date dates[] = {mylib::date(2002,3,13), mylib::date(2005,4,20),
-                               mylib::date(1971,9,13), mylib::date(1970,5,1)};
-        bubble_sort(dates, 4);
-        assert( dates[0] == mylib::date(1970,5,1) );
-        assert( dates[1] == mylib::date(1971,9,13) );
-        assert( dates[2] == mylib::date(2002,3,13) );
-        assert( dates[3] == mylib::date(2005,4,20) );
-    }
-
-
 }
