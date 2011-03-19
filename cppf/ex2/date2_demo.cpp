@@ -10,8 +10,8 @@ const char * to_string(const mylib::date * date)
 
 int main()
 {
-    mylib::date pi_day(2011,3,14);
-    mylib::date pi_approx_day(2011,7,22);
+    mylib::date pi_day = {2011,3,14};
+    mylib::date pi_approx_day = {2011,7,22};
     int days_apart = pi_approx_day.diff(pi_day);
     mylib::date just_another_day(pi_day);
     just_another_day.offset(-42);
