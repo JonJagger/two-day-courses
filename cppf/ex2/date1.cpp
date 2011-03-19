@@ -42,17 +42,14 @@ static mylib_date to_ymd(int day_number)
 
 bool mylib_date_is_valid(const mylib_date * date)
 {
-    return (date->year >= 1900 && date->year < 2100) &&
-        (date->month >= 1 && date->month <= 12) &&
+    return (date->month >= 1 && date->month <= 12) &&
         (date->day >= 1 && date->day <= days_in_month(date->year, date->month));
 }
         
 void mylib_date_offset(mylib_date * date, int offset_in_days)
 {
-    if (mylib_date_is_valid(date)) {
-        mylib_date d = to_ymd(to_day_number(date) + offset_in_days);
-        *date = d;
-    }
+    mylib_date d = to_ymd(to_day_number(date) + offset_in_days);
+    *date = d;
 }
 
 int mylib_date_diff(const mylib_date * date1, const mylib_date * date2)
@@ -66,4 +63,3 @@ bool mylib_date_is_equal(const mylib_date * date1, const mylib_date * date2)
         date1->month == date2->month &&
         date1->day == date2->day;
 }
-
