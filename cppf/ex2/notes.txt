@@ -1,0 +1,8 @@
+Some copyright issues might need to be addressed here. The formulas
+for julian day number calculations (see to_day_number() and to_ymd())
+are ripped from the boost date time library but it seems to be such a
+well known calculation so I'm not sure if it is a copyright issue that
+needs to be mentioned (btw, where did boost get their formulas from?).
+The calculation is also described in http://en.wikipedia.org/wiki/Julian_day.
+
+
