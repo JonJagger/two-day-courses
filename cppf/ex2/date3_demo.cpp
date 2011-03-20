@@ -8,7 +8,7 @@ namespace mylib {
     }
 
     date operator-(date date, int offset_in_days) {
-        return date -= offset_in_days;
+        return date += -offset_in_days;
     }
 }
 

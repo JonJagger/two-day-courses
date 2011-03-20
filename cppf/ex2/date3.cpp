@@ -18,17 +18,13 @@ namespace {
         return 31;
     }
 
-    int is_valid(int year, int month, int day) {
-        return (month >= 1 && month <= 12) &&
-            (day >= 1 && day <= days_in_month(year, month));
-    }
-
-    int to_day_number(const mylib::date * date)
+    int to_day_number(const mylib::date & date)
     {
-        int a = (14-date->month())/12;
-        int y = date->year() + 4800 - a;
-        int m = date->month() + 12*a - 3;
-        int d = date->day() + ((153*m+2)/5) + 365*y + (y/4) - (y/100) + (y/400) - 32045;
+        int a = (14-date.month())/12;
+        int y = date.year() + 4800 - a;
+        int m = date.month() + 12*a - 3;
+        int d = date.day() + ((153*m+2)/5) + 365*y
+            + (y/4) - (y/100) + (y/400) - 32045;
         return d;
     }
 
@@ -50,7 +46,8 @@ namespace {
 mylib::date::date(int year, int month, int day) :
     year_(year), month_(month), day_(day)
 {
-    if (!is_valid(year,month,day))
+    if (!(month >= 1 && month <= 12
+          && day >= 1 && day <= days_in_month(year, month)))
         throw std::out_of_range("invalid date");
 }
 
@@ -68,27 +65,16 @@ int mylib::date::day() const {
 
 mylib::date & mylib::date::operator+=(int offset_in_days)
 {
-    *this = to_date(to_day_number(this) + offset_in_days);
+    *this = to_date(to_day_number(*this) + offset_in_days);
     return *this;
-}
-
-mylib::date & mylib::date::operator-=(int offset_in_days)
-{
-    return operator+=(-offset_in_days);
 }
 
 int mylib::date::operator-(const mylib::date & other) const
 {
-    return to_day_number(this) - to_day_number(&other);
+    return to_day_number(*this) - to_day_number(other);
 }
 
 bool mylib::date::operator==(const mylib::date & other) const
 {
     return year_ == other.year_ && month_ == other.month_ && day_ == other.day_;
 }
-
-bool mylib::date::operator!=(const mylib::date & other) const
-{
-    return ! operator==(other);
-}
-
