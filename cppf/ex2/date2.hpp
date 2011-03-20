@@ -8,7 +8,6 @@ namespace mylib {
         int month;
         int day;
 
-        date(int year, int month, int day);
         bool is_valid() const;
         void offset(int offset_in_days);
         int diff(const date & other) const;

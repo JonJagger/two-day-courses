@@ -10,16 +10,25 @@
 CPPFLAGS<span class="hl sym">=-</span>Wall <span class="hl sym">-</span>Wextra <span class="hl sym">-</span>pedantic <span class="hl sym">-</span>O2
 LD<span class="hl sym">=</span>g<span class="hl sym">++</span>
 
-<span class="hl kwa">all</span><span class="hl sym">:</span> date1_tests date2_tests date3_tests date1_demo date2_demo date3_demo
+<span class="hl kwa">all</span><span class="hl sym">:</span> date1_tests date2_tests date3_tests date1_demo date2_demo date3_demo date1_sortdemo date2_sortdemo date3_sortdemo
 	
 date1_demo<span class="hl sym">:</span> date1.o date1_demo.o
 	<span class="hl sym">$(</span>LD<span class="hl sym">) -</span>o date1_demo <span class="hl sym">$</span>^
 
+date1_sortdemo<span class="hl sym">:</span> date1.o date1_sortdemo.o
+	<span class="hl sym">$(</span>LD<span class="hl sym">) -</span>o date1_sortdemo <span class="hl sym">$</span>^
+
 date2_demo<span class="hl sym">:</span> date2.o date2_demo.o
 	<span class="hl sym">$(</span>LD<span class="hl sym">) -</span>o date2_demo <span class="hl sym">$</span>^
 
+date2_sortdemo<span class="hl sym">:</span> date2.o date2_sortdemo.o
+	<span class="hl sym">$(</span>LD<span class="hl sym">) -</span>o date2_sortdemo <span class="hl sym">$</span>^
+
 date3_demo<span class="hl sym">:</span> date3.o date3_demo.o
 	<span class="hl sym">$(</span>LD<span class="hl sym">) -</span>o date3_demo <span class="hl sym">$</span>^
+
+date3_sortdemo<span class="hl sym">:</span> date3.o date3_sortdemo.o
+	<span class="hl sym">$(</span>LD<span class="hl sym">) -</span>o date3_sortdemo <span class="hl sym">$</span>^
 
 date1_tests<span class="hl sym">:</span> date1_tests.o date1.o
 	<span class="hl sym">$(</span>LD<span class="hl sym">) $</span>^ <span class="hl sym">&amp;&amp;</span> .<span class="hl sym">/</span>a.out
@@ -40,7 +49,7 @@ htmlfiles<span class="hl sym">:</span>
 	highlight <span class="hl sym">--</span>syntax<span class="hl sym">=</span>make <span class="hl sym">-</span>O html Makefile
 
 <span class="hl kwa">clean</span><span class="hl sym">:</span>
-	<span class="hl kwa">rm</span> <span class="hl sym">-</span>rf <span class="hl sym">*</span>.o date<span class="hl sym">[</span><span class="hl num">123</span><span class="hl sym">]</span>_demo a.out 
+	<span class="hl kwa">rm</span> <span class="hl sym">-</span>rf <span class="hl sym">*</span>.o date<span class="hl sym">[</span><span class="hl num">123</span><span class="hl sym">]</span>_demo date<span class="hl sym">[</span><span class="hl num">123</span><span class="hl sym">]</span>_sortdemo a.out 
 </pre>
 </body>
 </html>

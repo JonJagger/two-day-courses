@@ -16,22 +16,24 @@
 <span class="hl line">    8 </span>    <span class="hl kwa">return</span> str<span class="hl sym">;</span>
 <span class="hl line">    9 </span><span class="hl sym">}</span>
 <span class="hl line">   10 </span>
-<span class="hl line">   11 </span><span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl sym">()</span>
+<span class="hl line">   11 </span><span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl sym">(</span><span class="hl kwb">void</span><span class="hl sym">)</span>
 <span class="hl line">   12 </span><span class="hl sym">{</span>
 <span class="hl line">   13 </span>    mylib_date pi_day <span class="hl sym">= {</span><span class="hl num">2011</span><span class="hl sym">,</span><span class="hl num">3</span><span class="hl sym">,</span><span class="hl num">14</span><span class="hl sym">};</span>
 <span class="hl line">   14 </span>    mylib_date pi_approx_day <span class="hl sym">= {</span><span class="hl num">2011</span><span class="hl sym">,</span><span class="hl num">7</span><span class="hl sym">,</span><span class="hl num">22</span><span class="hl sym">};</span>
 <span class="hl line">   15 </span>    <span class="hl kwb">int</span> days_apart <span class="hl sym">=</span> <span class="hl kwd">mylib_date_diff</span><span class="hl sym">(&amp;</span>pi_approx_day<span class="hl sym">, &amp;</span>pi_day<span class="hl sym">);</span>
 <span class="hl line">   16 </span>    mylib_date just_another_day <span class="hl sym">=</span> pi_day<span class="hl sym">;</span>
 <span class="hl line">   17 </span>    <span class="hl kwd">mylib_date_offset</span><span class="hl sym">(&amp;</span>just_another_day<span class="hl sym">, -</span><span class="hl num">42</span><span class="hl sym">);</span>
-<span class="hl line">   18 </span>
-<span class="hl line">   19 </span>    <span class="hl kwd">printf</span><span class="hl sym">(</span><span class="hl str">&quot;Pi day is %s</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">,</span> <span class="hl kwd">to_string</span><span class="hl sym">(&amp;</span>pi_day<span class="hl sym">));</span>
-<span class="hl line">   20 </span>    <span class="hl kwd">printf</span><span class="hl sym">(</span><span class="hl str">&quot;Pi approximation day is %s (hint, %d/%d ~= Pi)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">,</span>
-<span class="hl line">   21 </span>           <span class="hl kwd">to_string</span><span class="hl sym">(&amp;</span>pi_approx_day<span class="hl sym">),</span>           
-<span class="hl line">   22 </span>           pi_approx_day<span class="hl sym">.</span>day<span class="hl sym">,</span> pi_approx_day<span class="hl sym">.</span>month<span class="hl sym">);</span>
-<span class="hl line">   23 </span>    <span class="hl kwd">printf</span><span class="hl sym">(</span><span class="hl str">&quot;Pi day and Pi approximation day are always %d days apart</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">,</span> days_apart<span class="hl sym">);</span>
-<span class="hl line">   24 </span>    <span class="hl kwd">printf</span><span class="hl sym">(</span><span class="hl str">&quot;%s is 42 days before Pi day when it is not a leap year</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">,</span>
-<span class="hl line">   25 </span>           <span class="hl kwd">to_string</span><span class="hl sym">(&amp;</span>just_another_day<span class="hl sym">));</span>
-<span class="hl line">   26 </span><span class="hl sym">}</span>
+<span class="hl line">   18 </span>    mylib_date last_day_of_january <span class="hl sym">= {</span><span class="hl num">2011</span><span class="hl sym">,</span><span class="hl num">1</span><span class="hl sym">,</span><span class="hl num">31</span><span class="hl sym">};</span>
+<span class="hl line">   19 </span>    <span class="hl kwb">bool</span> is_same <span class="hl sym">=</span> <span class="hl kwd">mylib_date_is_equal</span><span class="hl sym">(&amp;</span>just_another_day<span class="hl sym">, &amp;</span>last_day_of_january<span class="hl sym">);</span>
+<span class="hl line">   20 </span>
+<span class="hl line">   21 </span>    <span class="hl kwd">printf</span><span class="hl sym">(</span><span class="hl str">&quot;Pi day is %s</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">,</span> <span class="hl kwd">to_string</span><span class="hl sym">(&amp;</span>pi_day<span class="hl sym">));</span>
+<span class="hl line">   22 </span>    <span class="hl kwd">printf</span><span class="hl sym">(</span><span class="hl str">&quot;Pi approximation day is %s (hint, %d/%d ~= Pi)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">,</span>
+<span class="hl line">   23 </span>           <span class="hl kwd">to_string</span><span class="hl sym">(&amp;</span>pi_approx_day<span class="hl sym">),</span>           
+<span class="hl line">   24 </span>           pi_approx_day<span class="hl sym">.</span>day<span class="hl sym">,</span> pi_approx_day<span class="hl sym">.</span>month<span class="hl sym">);</span>
+<span class="hl line">   25 </span>    <span class="hl kwd">printf</span><span class="hl sym">(</span><span class="hl str">&quot;Pi day and Pi approximation day are always %d days apart</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">,</span> days_apart<span class="hl sym">);</span>
+<span class="hl line">   26 </span>    <span class="hl kwd">printf</span><span class="hl sym">(</span><span class="hl str">&quot;%s is 42 days before Pi day, which is%sthe last day of january</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">,</span>
+<span class="hl line">   27 </span>           <span class="hl kwd">to_string</span><span class="hl sym">(&amp;</span>just_another_day<span class="hl sym">), (</span>is_same?<span class="hl str">&quot; &quot;</span><span class="hl sym">:</span><span class="hl str">&quot; not &quot;</span><span class="hl sym">));</span>
+<span class="hl line">   28 </span><span class="hl sym">}</span>
 </pre>
 </body>
 </html>

@@ -22,12 +22,12 @@ int main(void)
         mylib::date d1(2000,2,29);
         mylib::date d2(2000,3,1);
         assert( d2 - d1 == 1 );
-        assert( d2 != d1 );
+        assert( !(d2 == d1) );
         d1 += 1;
         assert( d2 == d1 );
-        d1 -= 10;
+        d1 += -10;
         d2 += 10;
-        assert( d1 != d2 );
+        assert( !(d1 == d2) );
         assert( d2 - d1 == 20 );
     }
 

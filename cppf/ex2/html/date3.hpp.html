@@ -20,19 +20,17 @@
 <span class="hl line">   12 </span>        <span class="hl kwb">int</span> <span class="hl kwd">day</span><span class="hl sym">()</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
 <span class="hl line">   13 </span>        
 <span class="hl line">   14 </span>        date <span class="hl sym">&amp;</span> <span class="hl kwc">operator</span><span class="hl sym">+=(</span><span class="hl kwb">int</span> offset_in_days<span class="hl sym">);</span>
-<span class="hl line">   15 </span>        date <span class="hl sym">&amp;</span> <span class="hl kwc">operator</span><span class="hl sym">-=(</span><span class="hl kwb">int</span> offset_in_days<span class="hl sym">);</span>
-<span class="hl line">   16 </span>        <span class="hl kwb">int</span> <span class="hl kwc">operator</span><span class="hl sym">-(</span><span class="hl kwb">const</span> date <span class="hl sym">&amp;</span> other<span class="hl sym">)</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
-<span class="hl line">   17 </span>        <span class="hl kwb">bool</span> <span class="hl kwc">operator</span><span class="hl sym">==(</span><span class="hl kwb">const</span> date <span class="hl sym">&amp;</span> other<span class="hl sym">)</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
-<span class="hl line">   18 </span>        <span class="hl kwb">bool</span> <span class="hl kwc">operator</span><span class="hl sym">!=(</span><span class="hl kwb">const</span> date <span class="hl sym">&amp;</span> other<span class="hl sym">)</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
-<span class="hl line">   19 </span>    <span class="hl kwc">private</span><span class="hl sym">:</span>
-<span class="hl line">   20 </span>        <span class="hl kwb">int</span> year_<span class="hl sym">;</span>
-<span class="hl line">   21 </span>        <span class="hl kwb">int</span> month_<span class="hl sym">;</span>
-<span class="hl line">   22 </span>        <span class="hl kwb">int</span> day_<span class="hl sym">;</span>
-<span class="hl line">   23 </span>    <span class="hl sym">};</span>
+<span class="hl line">   15 </span>        <span class="hl kwb">int</span> <span class="hl kwc">operator</span><span class="hl sym">-(</span><span class="hl kwb">const</span> date <span class="hl sym">&amp;</span> other<span class="hl sym">)</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
+<span class="hl line">   16 </span>        <span class="hl kwb">bool</span> <span class="hl kwc">operator</span><span class="hl sym">==(</span><span class="hl kwb">const</span> date <span class="hl sym">&amp;</span> other<span class="hl sym">)</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
+<span class="hl line">   17 </span>    <span class="hl kwc">private</span><span class="hl sym">:</span>
+<span class="hl line">   18 </span>        <span class="hl kwb">int</span> year_<span class="hl sym">;</span>
+<span class="hl line">   19 </span>        <span class="hl kwb">int</span> month_<span class="hl sym">;</span>
+<span class="hl line">   20 </span>        <span class="hl kwb">int</span> day_<span class="hl sym">;</span>
+<span class="hl line">   21 </span>    <span class="hl sym">};</span>
+<span class="hl line">   22 </span>
+<span class="hl line">   23 </span><span class="hl sym">}</span>
 <span class="hl line">   24 </span>
-<span class="hl line">   25 </span><span class="hl sym">}</span>
-<span class="hl line">   26 </span>
-<span class="hl line">   27 </span><span class="hl dir">#endif</span>
+<span class="hl line">   25 </span><span class="hl dir">#endif</span>
 </pre>
 </body>
 </html>

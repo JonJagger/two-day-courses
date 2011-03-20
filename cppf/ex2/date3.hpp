@@ -12,10 +12,8 @@ namespace mylib {
         int day() const;
         
         date & operator+=(int offset_in_days);
-        date & operator-=(int offset_in_days);
         int operator-(const date & other) const;
         bool operator==(const date & other) const;
-        bool operator!=(const date & other) const;
     private:
         int year_;
         int month_;

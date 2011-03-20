@@ -21,7 +21,8 @@ static int to_day_number(const mylib_date * date)
     int a = (14-date->month)/12;
     int y = date->year + 4800 - a;
     int m = date->month + 12*a - 3;
-    int d = date->day + ((153*m+2)/5) + 365*y + (y/4) - (y/100) + (y/400) - 32045;
+    int d = date->day + ((153*m+2)/5) + 365*y
+        + (y/4) - (y/100) + (y/400) - 32045;
     return d;
 }
 
@@ -42,8 +43,9 @@ static mylib_date to_ymd(int day_number)
 
 bool mylib_date_is_valid(const mylib_date * date)
 {
-    return (date->month >= 1 && date->month <= 12) &&
-        (date->day >= 1 && date->day <= days_in_month(date->year, date->month));
+    return date->month >= 1 && date->month <= 12
+        && date->day >= 1
+        && date->day <= days_in_month(date->year, date->month);
 }
         
 void mylib_date_offset(mylib_date * date, int offset_in_days)
