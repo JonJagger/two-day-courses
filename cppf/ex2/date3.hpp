@@ -3,7 +3,7 @@
 
 namespace mylib {
 
-    class date {
+    struct date {
     public:
         date(int year, int month, int day);
 

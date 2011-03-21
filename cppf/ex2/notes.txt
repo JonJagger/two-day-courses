@@ -6,3 +6,5 @@ needs to be mentioned (btw, where did boost get their formulas from?).
 The calculation is also described in http://en.wikipedia.org/wiki/Julian_day.
 
 
+
+

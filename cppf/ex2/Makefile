@@ -38,6 +38,7 @@ htmlfiles:
 	highlight -l -O html date1*.[ch]pp
 	highlight -l -O html date2*.[ch]pp
 	highlight -l -O html date3*.[ch]pp
+	highlight -l -O html xyzlib.h
 	highlight --syntax=make -O html Makefile
 
 clean:

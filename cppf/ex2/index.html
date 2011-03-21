@@ -19,26 +19,121 @@ pre {
 <h3>Exercise 2: Date</h3>
 
 This exercise is about discovering some of the basic language features
-in C++. We will do that by comparing different versions of the same
-C++ program.
-<p>
-....
-</p>
-Here are the files: (I will do some fancy with iframes later)
+in C++. We will slowly change a C++ program written with typical C
+idioms, into using more and more C++ features. This exercise attempts
+to illustrate:
 <ul>
-<li> Makefile (<a href="html/Makefile.html">html</a>, <a href="Makefile">raw</a>)
-<li> date1.cpp (<a href="html/date1.cpp.html">html</a>, <a href="date1.cpp">raw</a>)
-<li> date1.hpp (<a href="html/date1.hpp.html">html</a>, <a href="date1.hpp">raw</a>)
-<li> date1_demo.cpp (<a href="html/date1_demo.cpp.html">html</a>, <a href="date1_demo.cpp">raw</a>)
-<li> date1_tests.cpp (<a href="html/date1_tests.cpp.html">html</a>, <a href="date1_tests.cpp">raw</a>)
-<li> date2.cpp (<a href="html/date2.cpp.html">html</a>, <a href="date2.cpp">raw</a>)
-<li> date2.hpp (<a href="html/date2.hpp.html">html</a>, <a href="date2.hpp">raw</a>)
-<li> date2_demo.cpp (<a href="html/date2_demo.cpp.html">html</a>, <a href="date2_demo.cpp">raw</a>)
-<li> date2_tests.cpp (<a href="html/date2_tests.cpp.html">html</a>, <a href="date2_tests.cpp">raw</a>)
-<li> date3.cpp (<a href="html/date3.cpp.html">html</a>, <a href="date3.cpp">raw</a>)
-<li> date3.hpp (<a href="html/date3.hpp.html">html</a>, <a href="date3.hpp">raw</a>)
-<li> date3_demo.cpp (<a href="html/date3_demo.cpp.html">html</a>, <a href="date3_demo.cpp">raw</a>)
-<li> date3_tests.cpp (<a href="html/date3_tests.cpp.html">html</a>, <a href="date3_tests.cpp">raw</a>)
+<li> references
+<li> namespaces
+<li> member functions
+<li> the this pointer
+<li> C++ versions of C library header files
+<li> constructors
+<li> encapsulation
+<li> operator overloading
+<li> object integrity
+<li> exceptions
+<li> immutable objects
+<li> and more...
+</ul>
+
+<p>
+
+<h4>Step 1</h4> 
+
+Please consider the following C++ headerfile (<code><a href="date1.hpp">date1.hpp</a></code>):
+
+<iframe src="html/date1.hpp.html" height=250 width=100% frameborder=0></iframe>
+
+and the implementation file (<code><a href="date1.cpp">date1.cpp</a></code>)
+
+<iframe src="html/date1.cpp.html" height=500 width=100% frameborder=0></iframe>
+
+with an example of how this code might be used (<code><a href="date1_demo.cpp">date1_demo.cpp</a></code>):
+
+<iframe src="html/date1_demo.cpp.html" height=450 width=100% frameborder=0></iframe>
+
+as you can see, it looks very much like an ADT as you would write it
+with the C programming language. Indeed by just adding a typedef to
+the struct and including <code>stdbool.h</code> it can be compiled by
+a pure C compiler.
+<p>
+Here are all the files you need as a starting point:
+<ul>
+<li><code>date1.hpp</code> (<a href="html/date1.hpp.html">html</a>, <a href="date1.hpp">raw</a>)
+<li><code>date1.cpp</code> (<a href="html/date1.cpp.html">html</a>, <a href="date1.cpp">raw</a>)
+<li><code>date1_demo.cpp</code> (<a href="html/date1_demo.cpp.html">html</a>, <a href="date1_demo.cpp">raw</a>)
+<li><code>date1_tests.cpp</code> (<a href="html/date1_tests.cpp.html">html</a>, <a href="date1_tests.cpp">raw</a>)
+<li><code>xyzlib.h</code> (<a href="html/xyzlib.h.html">html</a>, <a href="xyzlib.h">raw</a>)
+</ul>
+
+Focus on the <code>date1.hpp</code> headerfile and do the following
+steps, one by one, do not rush ahead. For each step, fix the other
+files as well. Try to reflect on what you see and discuss within your
+group:
+<ul>
+<li> use pass by reference rather than pass by pointer
+<li> put everything in a namespace <code>mylib</code>
+<li> remove the mylib_ prefixes as they are no longer necessary
+<li> move the free standing functions into being member functions of the struct (keep it as a <code>struct</code>, we will make it a <code>class</code> later.
+<li> in C++, member functions will implicitly get a <code>this</code> pointer, this means that you can now remove the first argument from our functions. Remember the not to keep the const specifier.
+<li> and now you can remove the _date postfix on the <code>other_date</code> argument name.
+<li> whenever including something, try to use the C++ versions of the C header files 
+</ul>
+
+You should end up with something like this:
+<ul>
+<li><code>date2.hpp</code> (<a href="html/date2.hpp.html">html</a>, <a href="date2.hpp">raw</a>)
+<li><code>date2.cpp</code> (<a href="html/date2.cpp.html">html</a>, <a href="date2.cpp">raw</a>)
+<li><code>date2_demo.cpp</code> (<a href="html/date2_demo.cpp.html">html</a>, <a href="date2_demo.cpp">raw</a>)
+<li><code>date2_tests.cpp</code> (<a href="html/date2_tests.cpp.html">html</a>, <a href="date2_tests.cpp">raw</a>)
+</ul>
+
+<h4>Step 2</h4>
+
+Continue refactoring. Focus on the headerfile <code>date2.hpp</code>
+and do the following steps, while updating the other files
+accordingly:
+<ul>
+<li> make the year, month, day variable private, and add year(), month(), day() query methods
+<li> add a constructor, throw an exception (<code>std::out_of_range</code>) if the date is not valid
+<li> overload the += operator to replace the offset member function
+<li> overload the - operator to replace the diff member function
+<li> overload the == operator to replace the is_equal member function
+<li> convince yourself that since the constructor will not allow invalid dates, and that the operators does not change a valid date into being invalid... then, you can get rid of the is_valid() method
+</ul>
+
+Here are a few hints you might find useful:
+<code>
+<ul> 
+<li> date & operator+=(int days);
+<li> int operator-(const date & other) const;
+<li> bool operator==(const date & other) const;
+</ul>
+</code>
+
+Eventually you should end up with something like this:
+<ul>
+<li><code>date3.hpp</code> (<a href="html/date3.hpp.html">html</a>, <a href="date3.hpp">raw</a>)
+<li><code>date3.cpp</code> (<a href="html/date3.cpp.html">html</a>, <a href="date3.cpp">raw</a>)
+<li><code>date3_demo.cpp</code> (<a href="html/date3_demo.cpp.html">html</a>, <a href="date3_demo.cpp">raw</a>)
+<li><code>date3_tests.cpp</code> (<a href="html/date3_tests.cpp.html">html</a>, <a href="date3_tests.cpp">raw</a>)
+</ul>
+
+<h4>Step 3 (optional)</h4>
+
+The code now uses quite a few of the basic C++ features, but there
+are still things that can be improved. Try to experiment with
+the following:
+<ul>
+<li> use the <code>class</code> keyword instead of the <code>struct</code> keyword. What is the difference between a <code>class</code> and a <code>struct</code> in C++?
+<li> Let the object maintain the <code>day_number</code> instead of <code>year_, month_, day_</code>, and then let year(), month(), day() derive the right value every time they are called. What effect will that have on performance?
+<li> Try to rewrite the whole thing into being <b>immutable</b>. What advantages, disdvantages do you see?
+<li> Just for the fun of it, add lots bells and whistles to the date class, eg overload loads of operators, add useless member functions, add a caching mechanism for speeding up performance. etc...
+<li> Finally, clean up the code, prune extranous junk and try to make the code look really nice!
+</ul>
+
+Eventually, you might end up with something that looks like this: (<b>links to date4 files</b>).
 
 </body>
 </html>

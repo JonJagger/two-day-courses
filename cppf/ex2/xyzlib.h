@@ -1,3 +1,6 @@
+#ifndef XYZLIB_INCLUDED
+#define XYZLIB_INCLUDED
+
 static bool xyzlib_is_leap_year(int year)
 {
     return (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0));
@@ -35,3 +38,5 @@ static void xyzlib_to_ymd(int day_number, int * year, int * month, int * day)
     *month = m + 3 - 12 * (m/10);
     *day = e - ((153*m + 2)/5) + 1;
 }
+
+#endif

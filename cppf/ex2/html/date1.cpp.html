@@ -7,72 +7,36 @@
 </head>
 <body class="hl">
 <pre class="hl"><span class="hl line">    1 </span><span class="hl dir">#include</span> <span class="hl dstr">&quot;date1.hpp&quot;</span><span class="hl dir"></span>
-<span class="hl line">    2 </span>
-<span class="hl line">    3 </span><span class="hl kwb">static bool</span> <span class="hl kwd">is_leap_year</span><span class="hl sym">(</span><span class="hl kwb">int</span> year<span class="hl sym">)</span>
-<span class="hl line">    4 </span><span class="hl sym">{</span>
-<span class="hl line">    5 </span>    <span class="hl kwa">return</span> <span class="hl sym">(</span>year <span class="hl sym">%</span> <span class="hl num">400</span> <span class="hl sym">==</span> <span class="hl num">0</span><span class="hl sym">) || ((</span>year <span class="hl sym">%</span> <span class="hl num">4</span> <span class="hl sym">==</span> <span class="hl num">0</span><span class="hl sym">) &amp;&amp; (</span>year <span class="hl sym">%</span> <span class="hl num">100</span> <span class="hl sym">!=</span> <span class="hl num">0</span><span class="hl sym">));</span>
-<span class="hl line">    6 </span><span class="hl sym">}</span>
-<span class="hl line">    7 </span>
-<span class="hl line">    8 </span><span class="hl kwb">static int</span> <span class="hl kwd">days_in_month</span><span class="hl sym">(</span><span class="hl kwb">int</span> year<span class="hl sym">,</span> <span class="hl kwb">int</span> month<span class="hl sym">)</span>
-<span class="hl line">    9 </span><span class="hl sym">{</span>
-<span class="hl line">   10 </span>    <span class="hl kwa">switch</span> <span class="hl sym">(</span>month<span class="hl sym">) {</span>
-<span class="hl line">   11 </span>    <span class="hl kwa">case</span> <span class="hl num">2</span><span class="hl sym">:</span>
-<span class="hl line">   12 </span>        <span class="hl kwa">return</span> <span class="hl kwd">is_leap_year</span><span class="hl sym">(</span>year<span class="hl sym">)</span> ? <span class="hl num">29</span> <span class="hl sym">:</span> <span class="hl num">28</span><span class="hl sym">;</span>
-<span class="hl line">   13 </span>    <span class="hl kwa">case</span> <span class="hl num">4</span><span class="hl sym">:</span> <span class="hl kwa">case</span> <span class="hl num">6</span><span class="hl sym">:</span> <span class="hl kwa">case</span> <span class="hl num">9</span><span class="hl sym">:</span> <span class="hl kwa">case</span> <span class="hl num">11</span><span class="hl sym">:</span>
-<span class="hl line">   14 </span>        <span class="hl kwa">return</span> <span class="hl num">30</span><span class="hl sym">;</span>
-<span class="hl line">   15 </span>    <span class="hl sym">}</span>
-<span class="hl line">   16 </span>    <span class="hl kwa">return</span> <span class="hl num">31</span><span class="hl sym">;</span>
-<span class="hl line">   17 </span><span class="hl sym">}</span>
-<span class="hl line">   18 </span>
-<span class="hl line">   19 </span><span class="hl kwb">static int</span> <span class="hl kwd">to_day_number</span><span class="hl sym">(</span><span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> date<span class="hl sym">)</span>
-<span class="hl line">   20 </span><span class="hl sym">{</span>
-<span class="hl line">   21 </span>    <span class="hl kwb">int</span> a <span class="hl sym">= (</span><span class="hl num">14</span><span class="hl sym">-</span>date<span class="hl sym">-&gt;</span>month<span class="hl sym">)/</span><span class="hl num">12</span><span class="hl sym">;</span>
-<span class="hl line">   22 </span>    <span class="hl kwb">int</span> y <span class="hl sym">=</span> date<span class="hl sym">-&gt;</span>year <span class="hl sym">+</span> <span class="hl num">4800</span> <span class="hl sym">-</span> a<span class="hl sym">;</span>
-<span class="hl line">   23 </span>    <span class="hl kwb">int</span> m <span class="hl sym">=</span> date<span class="hl sym">-&gt;</span>month <span class="hl sym">+</span> <span class="hl num">12</span><span class="hl sym">*</span>a <span class="hl sym">-</span> <span class="hl num">3</span><span class="hl sym">;</span>
-<span class="hl line">   24 </span>    <span class="hl kwb">int</span> d <span class="hl sym">=</span> date<span class="hl sym">-&gt;</span>day <span class="hl sym">+ ((</span><span class="hl num">153</span><span class="hl sym">*</span>m<span class="hl sym">+</span><span class="hl num">2</span><span class="hl sym">)/</span><span class="hl num">5</span><span class="hl sym">) +</span> <span class="hl num">365</span><span class="hl sym">*</span>y
-<span class="hl line">   25 </span>        <span class="hl sym">+ (</span>y<span class="hl sym">/</span><span class="hl num">4</span><span class="hl sym">) - (</span>y<span class="hl sym">/</span><span class="hl num">100</span><span class="hl sym">) + (</span>y<span class="hl sym">/</span><span class="hl num">400</span><span class="hl sym">) -</span> <span class="hl num">32045</span><span class="hl sym">;</span>
-<span class="hl line">   26 </span>    <span class="hl kwa">return</span> d<span class="hl sym">;</span>
-<span class="hl line">   27 </span><span class="hl sym">}</span>
-<span class="hl line">   28 </span>
-<span class="hl line">   29 </span><span class="hl kwb">static</span> mylib_date <span class="hl kwd">to_ymd</span><span class="hl sym">(</span><span class="hl kwb">int</span> day_number<span class="hl sym">)</span>
-<span class="hl line">   30 </span><span class="hl sym">{</span>
-<span class="hl line">   31 </span>    <span class="hl kwb">int</span> a <span class="hl sym">=</span> day_number <span class="hl sym">+</span> <span class="hl num">32044</span><span class="hl sym">;</span>
-<span class="hl line">   32 </span>    <span class="hl kwb">int</span> b <span class="hl sym">= (</span><span class="hl num">4</span><span class="hl sym">*</span>a <span class="hl sym">+</span> <span class="hl num">3</span><span class="hl sym">)/</span><span class="hl num">146097</span><span class="hl sym">;</span>
-<span class="hl line">   33 </span>    <span class="hl kwb">int</span> c <span class="hl sym">=</span> a<span class="hl sym">-((</span><span class="hl num">146097</span><span class="hl sym">*</span>b<span class="hl sym">)/</span><span class="hl num">4</span><span class="hl sym">);</span>
-<span class="hl line">   34 </span>    <span class="hl kwb">int</span> d <span class="hl sym">= (</span><span class="hl num">4</span><span class="hl sym">*</span>c <span class="hl sym">+</span> <span class="hl num">3</span><span class="hl sym">)/</span><span class="hl num">1461</span><span class="hl sym">;</span>
-<span class="hl line">   35 </span>    <span class="hl kwb">int</span> e <span class="hl sym">=</span> c <span class="hl sym">- (</span><span class="hl num">1461</span><span class="hl sym">*</span>d<span class="hl sym">)/</span><span class="hl num">4</span><span class="hl sym">;</span>
-<span class="hl line">   36 </span>    <span class="hl kwb">int</span> m <span class="hl sym">= (</span><span class="hl num">5</span><span class="hl sym">*</span>e <span class="hl sym">+</span> <span class="hl num">2</span><span class="hl sym">)/</span><span class="hl num">153</span><span class="hl sym">;</span>
-<span class="hl line">   37 </span>    mylib_date date<span class="hl sym">;</span>
-<span class="hl line">   38 </span>    date<span class="hl sym">.</span>year <span class="hl sym">=</span> <span class="hl num">100</span><span class="hl sym">*</span>b <span class="hl sym">+</span> d <span class="hl sym">-</span> <span class="hl num">4800</span> <span class="hl sym">+ (</span>m<span class="hl sym">/</span><span class="hl num">10</span><span class="hl sym">);</span>
-<span class="hl line">   39 </span>    date<span class="hl sym">.</span>month <span class="hl sym">=</span> m <span class="hl sym">+</span> <span class="hl num">3</span> <span class="hl sym">-</span> <span class="hl num">12</span> <span class="hl sym">* (</span>m<span class="hl sym">/</span><span class="hl num">10</span><span class="hl sym">);</span>
-<span class="hl line">   40 </span>    date<span class="hl sym">.</span>day <span class="hl sym">=</span> e <span class="hl sym">- ((</span><span class="hl num">153</span><span class="hl sym">*</span>m <span class="hl sym">+</span> <span class="hl num">2</span><span class="hl sym">)/</span><span class="hl num">5</span><span class="hl sym">) +</span> <span class="hl num">1</span><span class="hl sym">;</span>
-<span class="hl line">   41 </span>    <span class="hl kwa">return</span> date<span class="hl sym">;</span>
-<span class="hl line">   42 </span><span class="hl sym">}</span>
-<span class="hl line">   43 </span>
-<span class="hl line">   44 </span><span class="hl kwb">bool</span> <span class="hl kwd">mylib_date_is_valid</span><span class="hl sym">(</span><span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> date<span class="hl sym">)</span>
-<span class="hl line">   45 </span><span class="hl sym">{</span>
-<span class="hl line">   46 </span>    <span class="hl kwa">return</span> date<span class="hl sym">-&gt;</span>month <span class="hl sym">&gt;=</span> <span class="hl num">1</span> <span class="hl sym">&amp;&amp;</span> date<span class="hl sym">-&gt;</span>month <span class="hl sym">&lt;=</span> <span class="hl num">12</span>
-<span class="hl line">   47 </span>        <span class="hl sym">&amp;&amp;</span> date<span class="hl sym">-&gt;</span>day <span class="hl sym">&gt;=</span> <span class="hl num">1</span>
-<span class="hl line">   48 </span>        <span class="hl sym">&amp;&amp;</span> date<span class="hl sym">-&gt;</span>day <span class="hl sym">&lt;=</span> <span class="hl kwd">days_in_month</span><span class="hl sym">(</span>date<span class="hl sym">-&gt;</span>year<span class="hl sym">,</span> date<span class="hl sym">-&gt;</span>month<span class="hl sym">);</span>
-<span class="hl line">   49 </span><span class="hl sym">}</span>
-<span class="hl line">   50 </span>        
-<span class="hl line">   51 </span><span class="hl kwb">void</span> <span class="hl kwd">mylib_date_offset</span><span class="hl sym">(</span>mylib_date <span class="hl sym">*</span> date<span class="hl sym">,</span> <span class="hl kwb">int</span> offset_in_days<span class="hl sym">)</span>
-<span class="hl line">   52 </span><span class="hl sym">{</span>
-<span class="hl line">   53 </span>    mylib_date d <span class="hl sym">=</span> <span class="hl kwd">to_ymd</span><span class="hl sym">(</span><span class="hl kwd">to_day_number</span><span class="hl sym">(</span>date<span class="hl sym">) +</span> offset_in_days<span class="hl sym">);</span>
-<span class="hl line">   54 </span>    <span class="hl sym">*</span>date <span class="hl sym">=</span> d<span class="hl sym">;</span>
-<span class="hl line">   55 </span><span class="hl sym">}</span>
-<span class="hl line">   56 </span>
-<span class="hl line">   57 </span><span class="hl kwb">int</span> <span class="hl kwd">mylib_date_diff</span><span class="hl sym">(</span><span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> date1<span class="hl sym">,</span> <span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> date2<span class="hl sym">)</span>
-<span class="hl line">   58 </span><span class="hl sym">{</span>
-<span class="hl line">   59 </span>    <span class="hl kwa">return</span> <span class="hl kwd">to_day_number</span><span class="hl sym">(</span>date1<span class="hl sym">) -</span> <span class="hl kwd">to_day_number</span><span class="hl sym">(</span>date2<span class="hl sym">);</span>
-<span class="hl line">   60 </span><span class="hl sym">}</span>
-<span class="hl line">   61 </span>
-<span class="hl line">   62 </span><span class="hl kwb">bool</span> <span class="hl kwd">mylib_date_is_equal</span><span class="hl sym">(</span><span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> date1<span class="hl sym">,</span> <span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> date2<span class="hl sym">)</span>
-<span class="hl line">   63 </span><span class="hl sym">{</span>
-<span class="hl line">   64 </span>    <span class="hl kwa">return</span> date1<span class="hl sym">-&gt;</span>year <span class="hl sym">==</span> date2<span class="hl sym">-&gt;</span>year <span class="hl sym">&amp;&amp;</span>
-<span class="hl line">   65 </span>        date1<span class="hl sym">-&gt;</span>month <span class="hl sym">==</span> date2<span class="hl sym">-&gt;</span>month <span class="hl sym">&amp;&amp;</span>
-<span class="hl line">   66 </span>        date1<span class="hl sym">-&gt;</span>day <span class="hl sym">==</span> date2<span class="hl sym">-&gt;</span>day<span class="hl sym">;</span>
-<span class="hl line">   67 </span><span class="hl sym">}</span>
+<span class="hl line">    2 </span><span class="hl dir">#include</span> <span class="hl dstr">&quot;xyzlib.h&quot;</span><span class="hl dir"></span>
+<span class="hl line">    3 </span>
+<span class="hl line">    4 </span><span class="hl kwb">bool</span> <span class="hl kwd">mylib_date_is_valid</span><span class="hl sym">(</span><span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> date<span class="hl sym">)</span>
+<span class="hl line">    5 </span><span class="hl sym">{</span>
+<span class="hl line">    6 </span>    <span class="hl kwa">return</span> date<span class="hl sym">-&gt;</span>month <span class="hl sym">&gt;=</span> <span class="hl num">1</span> <span class="hl sym">&amp;&amp;</span> date<span class="hl sym">-&gt;</span>month <span class="hl sym">&lt;=</span> <span class="hl num">12</span>
+<span class="hl line">    7 </span>        <span class="hl sym">&amp;&amp;</span> date<span class="hl sym">-&gt;</span>day <span class="hl sym">&gt;=</span> <span class="hl num">1</span>
+<span class="hl line">    8 </span>        <span class="hl sym">&amp;&amp;</span> date<span class="hl sym">-&gt;</span>day <span class="hl sym">&lt;=</span> <span class="hl kwd">xyzlib_days_in_month</span><span class="hl sym">(</span>date<span class="hl sym">-&gt;</span>year<span class="hl sym">,</span> date<span class="hl sym">-&gt;</span>month<span class="hl sym">);</span>
+<span class="hl line">    9 </span><span class="hl sym">}</span>
+<span class="hl line">   10 </span>        
+<span class="hl line">   11 </span><span class="hl kwb">void</span> <span class="hl kwd">mylib_date_offset</span><span class="hl sym">(</span>mylib_date <span class="hl sym">*</span> date<span class="hl sym">,</span> <span class="hl kwb">int</span> days<span class="hl sym">)</span>
+<span class="hl line">   12 </span><span class="hl sym">{</span>
+<span class="hl line">   13 </span>    <span class="hl kwb">int</span> day_number <span class="hl sym">=</span> <span class="hl kwd">xyzlib_to_day_number</span><span class="hl sym">(</span>date<span class="hl sym">-&gt;</span>year<span class="hl sym">,</span>date<span class="hl sym">-&gt;</span>month<span class="hl sym">,</span>date<span class="hl sym">-&gt;</span>day<span class="hl sym">);</span>
+<span class="hl line">   14 </span>    <span class="hl kwb">int</span> new_day_number <span class="hl sym">=</span> day_number <span class="hl sym">+</span> days<span class="hl sym">;</span>
+<span class="hl line">   15 </span>    <span class="hl kwd">xyzlib_to_ymd</span><span class="hl sym">(</span>new_day_number<span class="hl sym">, &amp;</span>date<span class="hl sym">-&gt;</span>year<span class="hl sym">, &amp;</span>date<span class="hl sym">-&gt;</span>month<span class="hl sym">, &amp;</span>date<span class="hl sym">-&gt;</span>day<span class="hl sym">);</span>
+<span class="hl line">   16 </span><span class="hl sym">}</span>
+<span class="hl line">   17 </span>
+<span class="hl line">   18 </span><span class="hl kwb">int</span> <span class="hl kwd">mylib_date_diff</span><span class="hl sym">(</span><span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> date<span class="hl sym">,</span> <span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> other_date<span class="hl sym">)</span>
+<span class="hl line">   19 </span><span class="hl sym">{</span>
+<span class="hl line">   20 </span>    <span class="hl kwb">int</span> day_number <span class="hl sym">=</span> <span class="hl kwd">xyzlib_to_day_number</span><span class="hl sym">(</span>date<span class="hl sym">-&gt;</span>year<span class="hl sym">,</span> date<span class="hl sym">-&gt;</span>month<span class="hl sym">,</span> date<span class="hl sym">-&gt;</span>day<span class="hl sym">);</span>
+<span class="hl line">   21 </span>    <span class="hl kwb">int</span> other_day_number <span class="hl sym">=</span> <span class="hl kwd">xyzlib_to_day_number</span><span class="hl sym">(</span>
+<span class="hl line">   22 </span>        other_date<span class="hl sym">-&gt;</span>year<span class="hl sym">,</span> other_date<span class="hl sym">-&gt;</span>month<span class="hl sym">,</span> other_date<span class="hl sym">-&gt;</span>day<span class="hl sym">);</span>
+<span class="hl line">   23 </span>    <span class="hl kwa">return</span> day_number <span class="hl sym">-</span> other_day_number<span class="hl sym">;</span>
+<span class="hl line">   24 </span><span class="hl sym">}</span>
+<span class="hl line">   25 </span>
+<span class="hl line">   26 </span><span class="hl kwb">bool</span> <span class="hl kwd">mylib_date_is_equal</span><span class="hl sym">(</span><span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> date<span class="hl sym">,</span> <span class="hl kwb">const</span> mylib_date <span class="hl sym">*</span> other_date<span class="hl sym">)</span>
+<span class="hl line">   27 </span><span class="hl sym">{</span>
+<span class="hl line">   28 </span>    <span class="hl kwa">return</span> date<span class="hl sym">-&gt;</span>year <span class="hl sym">==</span> other_date<span class="hl sym">-&gt;</span>year <span class="hl sym">&amp;&amp;</span>
+<span class="hl line">   29 </span>        date<span class="hl sym">-&gt;</span>month <span class="hl sym">==</span> other_date<span class="hl sym">-&gt;</span>month <span class="hl sym">&amp;&amp;</span>
+<span class="hl line">   30 </span>        date<span class="hl sym">-&gt;</span>day <span class="hl sym">==</span> other_date<span class="hl sym">-&gt;</span>day<span class="hl sym">;</span>
+<span class="hl line">   31 </span><span class="hl sym">}</span>
 </pre>
 </body>
 </html>
