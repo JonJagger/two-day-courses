@@ -6,12 +6,12 @@
 <link rel="stylesheet" type="text/css" href="highlight.css">
 </head>
 <body class="hl">
-<pre class="hl"><span class="hl line">    1 </span><span class="hl dir">#ifndef MYLIB_DATE_INCLUDED_</span>
-<span class="hl line">    2 </span><span class="hl dir">#define MYLIB_DATE_INCLUDED_</span>
+<pre class="hl"><span class="hl line">    1 </span><span class="hl dir">#ifndef MYLIB_DATE_INCLUDED</span>
+<span class="hl line">    2 </span><span class="hl dir">#define MYLIB_DATE_INCLUDED</span>
 <span class="hl line">    3 </span>
 <span class="hl line">    4 </span><span class="hl kwa">namespace</span> mylib <span class="hl sym">{</span>
 <span class="hl line">    5 </span>
-<span class="hl line">    6 </span>    <span class="hl kwc">class</span> date <span class="hl sym">{</span>
+<span class="hl line">    6 </span>    <span class="hl kwb">struct</span> date <span class="hl sym">{</span>
 <span class="hl line">    7 </span>    <span class="hl kwc">public</span><span class="hl sym">:</span>
 <span class="hl line">    8 </span>        <span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl kwb">int</span> year<span class="hl sym">,</span> <span class="hl kwb">int</span> month<span class="hl sym">,</span> <span class="hl kwb">int</span> day<span class="hl sym">);</span>
 <span class="hl line">    9 </span>
@@ -19,7 +19,7 @@
 <span class="hl line">   11 </span>        <span class="hl kwb">int</span> <span class="hl kwd">month</span><span class="hl sym">()</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
 <span class="hl line">   12 </span>        <span class="hl kwb">int</span> <span class="hl kwd">day</span><span class="hl sym">()</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
 <span class="hl line">   13 </span>        
-<span class="hl line">   14 </span>        date <span class="hl sym">&amp;</span> <span class="hl kwc">operator</span><span class="hl sym">+=(</span><span class="hl kwb">int</span> offset_in_days<span class="hl sym">);</span>
+<span class="hl line">   14 </span>        date <span class="hl sym">&amp;</span> <span class="hl kwc">operator</span><span class="hl sym">+=(</span><span class="hl kwb">int</span> days<span class="hl sym">);</span>
 <span class="hl line">   15 </span>        <span class="hl kwb">int</span> <span class="hl kwc">operator</span><span class="hl sym">-(</span><span class="hl kwb">const</span> date <span class="hl sym">&amp;</span> other<span class="hl sym">)</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
 <span class="hl line">   16 </span>        <span class="hl kwb">bool</span> <span class="hl kwc">operator</span><span class="hl sym">==(</span><span class="hl kwb">const</span> date <span class="hl sym">&amp;</span> other<span class="hl sym">)</span> <span class="hl kwb">const</span><span class="hl sym">;</span>
 <span class="hl line">   17 </span>    <span class="hl kwc">private</span><span class="hl sym">:</span>

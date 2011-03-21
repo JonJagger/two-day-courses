@@ -23,7 +23,7 @@ int main()
     std::cout
         << "Pi day is " << pi_day << '\n'
         << "Pi approximation day is " << pi_approx_day 
-        << " (hint, " << pi_approx_day.day() << "/"
+        << " (hint, " << pi_approx_day.day() << '/'
         << pi_approx_day.month() << " ~= Pi)\n"
         << "Pi day and Pi approximation day are always " << days_apart
         << " days apart\n"
