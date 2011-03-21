@@ -1,5 +1,5 @@
-#ifndef MYLIB_DATE_INCLUDED_
-#define MYLIB_DATE_INCLUDED_
+#ifndef MYLIB_DATE_INCLUDED
+#define MYLIB_DATE_INCLUDED
 
 namespace mylib {
 
@@ -11,7 +11,7 @@ namespace mylib {
         int month() const;
         int day() const;
         
-        date & operator+=(int offset_in_days);
+        date & operator+=(int days);
         int operator-(const date & other) const;
         bool operator==(const date & other) const;
     private:

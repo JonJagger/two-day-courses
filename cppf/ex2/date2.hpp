@@ -1,5 +1,5 @@
-#ifndef MYLIB_DATE_INCLUDED_
-#define MYLIB_DATE_INCLUDED_
+#ifndef MYLIB_DATE_INCLUDED
+#define MYLIB_DATE_INCLUDED
 
 namespace mylib {
 
@@ -9,7 +9,7 @@ namespace mylib {
         int day;
 
         bool is_valid() const;
-        void offset(int offset_in_days);
+        void offset(int days);
         int diff(const date & other) const;
         bool is_equal(const date & other) const;
     };

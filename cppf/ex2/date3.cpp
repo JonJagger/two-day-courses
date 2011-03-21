@@ -63,9 +63,9 @@ int mylib::date::day() const {
     return day_;
 }
 
-mylib::date & mylib::date::operator+=(int offset_in_days)
+mylib::date & mylib::date::operator+=(int days)
 {
-    *this = to_date(to_day_number(*this) + offset_in_days);
+    *this = to_date(to_day_number(*this) + days);
     return *this;
 }
 

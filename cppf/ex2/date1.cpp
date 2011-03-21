@@ -48,20 +48,19 @@ bool mylib_date_is_valid(const mylib_date * date)
         && date->day <= days_in_month(date->year, date->month);
 }
         
-void mylib_date_offset(mylib_date * date, int offset_in_days)
+void mylib_date_offset(mylib_date * date, int days)
 {
-    mylib_date d = to_ymd(to_day_number(date) + offset_in_days);
-    *date = d;
+    *date = to_ymd(to_day_number(date) + days);
 }
 
-int mylib_date_diff(const mylib_date * date1, const mylib_date * date2)
+int mylib_date_diff(const mylib_date * date, const mylib_date * other_date)
 {
-    return to_day_number(date1) - to_day_number(date2);
+    return to_day_number(date) - to_day_number(other_date);
 }
 
-bool mylib_date_is_equal(const mylib_date * date1, const mylib_date * date2)
+bool mylib_date_is_equal(const mylib_date * date, const mylib_date * other_date)
 {
-    return date1->year == date2->year &&
-        date1->month == date2->month &&
-        date1->day == date2->day;
+    return date->year == other_date->year &&
+        date->month == other_date->month &&
+        date->day == other_date->day;
 }
