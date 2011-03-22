@@ -39,8 +39,6 @@ to illustrate:
 
 <p>
 
-<h4>Step 1</h4> 
-
 Please consider the following C++ headerfile (<code><a href="date1.hpp">date1.hpp</a></code>):
 
 <iframe src="html/date1.hpp.html" height=250 width=100% frameborder=0></iframe>
@@ -57,8 +55,10 @@ as you can see, it looks very much like an ADT as you would write it
 with the C programming language. Indeed by just adding a typedef to
 the struct and including <code>stdbool.h</code> it can be compiled by
 a pure C compiler.
-<p>
-Here are all the files you need as a starting point:
+
+<h4>Step 1</h4> 
+
+We are now going to refactor our date library. Here are all the files you need as a starting point:
 <ul>
 <li><code>date1.hpp</code> (<a href="html/date1.hpp.html">html</a>, <a href="date1.hpp">raw</a>)
 <li><code>date1.cpp</code> (<a href="html/date1.cpp.html">html</a>, <a href="date1.cpp">raw</a>)
@@ -76,6 +76,7 @@ group:
 <li> put everything in a namespace <code>mylib</code>
 <li> remove the mylib_ prefixes as they are no longer necessary
 <li> move the free standing functions into being member functions of the struct (keep it as a <code>struct</code>, we will make it a <code>class</code> later.
+<li> remove the date_ prefix from the member functions as they are no longer necessary
 <li> in C++, member functions will implicitly get a <code>this</code> pointer, this means that you can now remove the first argument from our functions. Remember the not to keep the const specifier.
 <li> and now you can remove the _date postfix on the <code>other_date</code> argument name.
 <li> whenever including something, try to use the C++ versions of the C header files 
@@ -126,6 +127,7 @@ The code now uses quite a few of the basic C++ features, but there
 are still things that can be improved. Try to experiment with
 the following:
 <ul>
+<li> move the <code>operatator==</code> out of the class, but keep it in the same namespace
 <li> use the <code>class</code> keyword instead of the <code>struct</code> keyword. What is the difference between a <code>class</code> and a <code>struct</code> in C++?
 <li> Let the object maintain the <code>day_number</code> instead of <code>year_, month_, day_</code>, and then let year(), month(), day() derive the right value every time they are called. What effect will that have on performance?
 <li> Try to rewrite the whole thing into being <b>immutable</b>. What advantages, disdvantages do you see?
