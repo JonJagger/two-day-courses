@@ -34,19 +34,26 @@ list.
 Here is an example of how such a container might be used:
 <pre>
 ...
-recently_used_list rul(4);
+mylib::recently_used_list rul(4);
 assert(rul.size() == 0);
 rul.push_back("foo");
 rul.push_back("bar");
 rul.push_back("gaz");
 assert(rul.size() == 3);
+assert(rul[0] == "gaz");
+assert(rul[1] == "bar");
+assert(rul[2] == "foo");
 rul.push_back("bar");
 assert(rul.size() == 3);
-assert( *rul.begin() == "bar" );
+assert(rul[0] == "bar");
+assert(rul[1] == "gaz");
+assert(rul[2] == "foo");
 rul.push_back("faz");
 assert(rul.size() == 4);
-rul.push_back("baz");
-assert(rul.size() == 4);
+assert(rul[0] == "faz");
+assert(rul[1] == "bar");
+assert(rul[2] == "gaz");
+assert(rul[3] == "foo");
 ...
 </pre>
 <p>
