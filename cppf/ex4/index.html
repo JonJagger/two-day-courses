@@ -19,7 +19,7 @@ pre {
 <h3>Exercise 4: Composite</h3>
 
 A class is not a useful unit of design, while clusters of classes in
-particular patterns is. This exercise is about using several collaborating classes.
+particular patterns are. This exercise is about using several collaborating classes.
 <p>
 Take a look at these files:
 <ul>
@@ -31,18 +31,27 @@ Take a look at these files:
 
 with the corresponding implementation files:
 <ul>
-<li><code>directory.cpp</code> (<a href="html/directory.cpp">html</a>, <a href="directory.cpp">raw</a>)
+<li><code>directory.cpp</code> (<a href="html/directory.cpp.html">html</a>, <a href="directory.cpp">raw</a>)
 <li><code>file.cpp</code> (<a href="html/file.cpp.html">html</a>, <a href="file.cpp">raw</a>)
-<ul>
+</ul>
 
 and finally, a Make file and a demo file showing an example how this stuff might be used:
 <ul>
 <li><code>directory_demo.cpp</code> (<a href="html/directory_demo.cpp.html">html</a>, <a href="directory_demo.cpp">raw</a>)
 <li><code>Makefile</code> (<a href="html/Makefile.html">html</a>, <a href="Makefile">raw</a>)
+</ul>
 
 Using these files as a starting point, please update the stuff so
 each <code>directory entry</code> can also have a date. Feel free to
 use a date class from exercise 2.
+
+<h4>Optional 1</h4>
+
+Create a new visitor subclass that can visit the directory structure and create an xml representation.
+
+<h4>Optional 2</h4>
+
+Create a new visitor subclass that can visit each entry in the directory structure and "touch" the entries so the dates are all the same.
 
 </body>
 </html>
