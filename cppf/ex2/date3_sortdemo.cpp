@@ -9,9 +9,10 @@ namespace mylib {
         return out << date.year() << "/" << date.month() << "/" << date.day();
     }
 
-    bool operator<(const mylib::date & lhs, const mylib::date & rhs) {
+    bool operator<(const date & lhs, const date & rhs) {
         return lhs - rhs < 0;
     }
+
 }
 
 template <typename T>

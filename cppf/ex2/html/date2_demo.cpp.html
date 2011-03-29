@@ -9,7 +9,7 @@
 <pre class="hl"><span class="hl line">    1 </span><span class="hl dir">#include</span> <span class="hl dstr">&quot;date2.hpp&quot;</span><span class="hl dir"></span>
 <span class="hl line">    2 </span><span class="hl dir">#include &lt;stdio.h&gt;</span>
 <span class="hl line">    3 </span>
-<span class="hl line">    4 </span><span class="hl kwb">const char</span> <span class="hl sym">*</span> <span class="hl kwd">to_string</span><span class="hl sym">(</span><span class="hl kwb">const</span> mylib<span class="hl sym">::</span>date <span class="hl sym">&amp;</span> date<span class="hl sym">)</span>
+<span class="hl line">    4 </span><span class="hl kwb">static const char</span> <span class="hl sym">*</span> <span class="hl kwd">to_string</span><span class="hl sym">(</span><span class="hl kwb">const</span> mylib<span class="hl sym">::</span>date <span class="hl sym">&amp;</span> date<span class="hl sym">)</span>
 <span class="hl line">    5 </span><span class="hl sym">{</span>
 <span class="hl line">    6 </span>    <span class="hl kwb">static char</span> str<span class="hl sym">[</span><span class="hl kwa">sizeof</span><span class="hl sym">(</span><span class="hl str">&quot;yyyy/mm/dd&quot;</span><span class="hl sym">)+</span><span class="hl num">1</span><span class="hl sym">];</span>
 <span class="hl line">    7 </span>    <span class="hl kwd">sprintf</span><span class="hl sym">(</span>str<span class="hl sym">,</span><span class="hl str">&quot;%d/%d/%d&quot;</span><span class="hl sym">,</span> date<span class="hl sym">.</span>year<span class="hl sym">,</span> date<span class="hl sym">.</span>month<span class="hl sym">,</span> date<span class="hl sym">.</span>day<span class="hl sym">);</span>

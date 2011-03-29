@@ -127,7 +127,7 @@ The code now uses quite a few of the basic C++ features, but there
 are still things that can be improved. Try to experiment with
 the following:
 <ul>
-<li> move the <code>operatator==</code> out of the class, but keep it in the same namespace
+<li> move the <code>operatator==</code> out of the class, but keep it as a free standing function in the same namespace
 <li> use the <code>class</code> keyword instead of the <code>struct</code> keyword. What is the difference between a <code>class</code> and a <code>struct</code> in C++?
 <li> Let the object maintain the <code>day_number</code> instead of <code>year_, month_, day_</code>, and then let year(), month(), day() derive the right value every time they are called. What effect will that have on performance?
 <li> Try to rewrite the whole thing into being <b>immutable</b>. What advantages, disdvantages do you see?

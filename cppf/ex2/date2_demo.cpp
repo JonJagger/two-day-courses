@@ -1,7 +1,7 @@
 #include "date2.hpp"
 #include <stdio.h>
 
-const char * to_string(const mylib::date & date)
+static const char * to_string(const mylib::date & date)
 {
     static char str[sizeof("yyyy/mm/dd")+1];
     sprintf(str,"%d/%d/%d", date.year, date.month, date.day);

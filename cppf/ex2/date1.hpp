@@ -1,5 +1,5 @@
-#ifndef MYLIB_DATE_INCLUDED
-#define MYLIB_DATE_INCLUDED
+#ifndef MYLIB_DATE_HPP_INCLUDED
+#define MYLIB_DATE_HPP_INCLUDED
 
 struct mylib_date {
     int year;

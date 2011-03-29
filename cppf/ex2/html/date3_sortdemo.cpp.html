@@ -17,38 +17,39 @@
 <span class="hl line">    9 </span>        <span class="hl kwa">return</span> out <span class="hl sym">&lt;&lt;</span> date<span class="hl sym">.</span><span class="hl kwd">year</span><span class="hl sym">() &lt;&lt;</span> <span class="hl str">&quot;/&quot;</span> <span class="hl sym">&lt;&lt;</span> date<span class="hl sym">.</span><span class="hl kwd">month</span><span class="hl sym">() &lt;&lt;</span> <span class="hl str">&quot;/&quot;</span> <span class="hl sym">&lt;&lt;</span> date<span class="hl sym">.</span><span class="hl kwd">day</span><span class="hl sym">();</span>
 <span class="hl line">   10 </span>    <span class="hl sym">}</span>
 <span class="hl line">   11 </span>
-<span class="hl line">   12 </span>    <span class="hl kwb">bool</span> <span class="hl kwc">operator</span><span class="hl sym">&lt;(</span><span class="hl kwb">const</span> mylib<span class="hl sym">::</span>date <span class="hl sym">&amp;</span> lhs<span class="hl sym">,</span> <span class="hl kwb">const</span> mylib<span class="hl sym">::</span>date <span class="hl sym">&amp;</span> rhs<span class="hl sym">) {</span>
+<span class="hl line">   12 </span>    <span class="hl kwb">bool</span> <span class="hl kwc">operator</span><span class="hl sym">&lt;(</span><span class="hl kwb">const</span> date <span class="hl sym">&amp;</span> lhs<span class="hl sym">,</span> <span class="hl kwb">const</span> date <span class="hl sym">&amp;</span> rhs<span class="hl sym">) {</span>
 <span class="hl line">   13 </span>        <span class="hl kwa">return</span> lhs <span class="hl sym">-</span> rhs <span class="hl sym">&lt;</span> <span class="hl num">0</span><span class="hl sym">;</span>
 <span class="hl line">   14 </span>    <span class="hl sym">}</span>
-<span class="hl line">   15 </span><span class="hl sym">}</span>
-<span class="hl line">   16 </span>
-<span class="hl line">   17 </span><span class="hl kwc">template</span> <span class="hl sym">&lt;</span>typename T<span class="hl sym">&gt;</span>
-<span class="hl line">   18 </span><span class="hl kwb">void</span> <span class="hl kwd">bubble_sort</span><span class="hl sym">(</span>T <span class="hl sym">*</span> base<span class="hl sym">,</span> <span class="hl kwb">size_t</span> number_of_elements<span class="hl sym">)</span>
-<span class="hl line">   19 </span><span class="hl sym">{</span>
-<span class="hl line">   20 </span>    <span class="hl kwa">for</span><span class="hl sym">(;;) {</span>
-<span class="hl line">   21 </span>        <span class="hl kwb">bool</span> swapped <span class="hl sym">=</span> <span class="hl kwa">false</span><span class="hl sym">;</span>
-<span class="hl line">   22 </span>        <span class="hl kwa">for</span> <span class="hl sym">(</span><span class="hl kwb">size_t</span> i <span class="hl sym">=</span> <span class="hl num">0</span><span class="hl sym">;</span> i <span class="hl sym">&lt;</span> number_of_elements <span class="hl sym">-</span> <span class="hl num">1</span><span class="hl sym">;</span> i<span class="hl sym">++)</span> 
-<span class="hl line">   23 </span>            <span class="hl kwa">if</span> <span class="hl sym">(! (</span>base<span class="hl sym">[</span>i<span class="hl sym">] &lt;</span> base<span class="hl sym">[</span>i<span class="hl sym">+</span><span class="hl num">1</span><span class="hl sym">]) ) {</span>
-<span class="hl line">   24 </span>                T tmp <span class="hl sym">=</span> base<span class="hl sym">[</span>i<span class="hl sym">];</span>
-<span class="hl line">   25 </span>                base<span class="hl sym">[</span>i<span class="hl sym">] =</span> base<span class="hl sym">[</span>i<span class="hl sym">+</span><span class="hl num">1</span><span class="hl sym">];</span>
-<span class="hl line">   26 </span>                base<span class="hl sym">[</span>i<span class="hl sym">+</span><span class="hl num">1</span><span class="hl sym">] =</span> tmp<span class="hl sym">;</span>
-<span class="hl line">   27 </span>                swapped <span class="hl sym">=</span> <span class="hl kwa">true</span><span class="hl sym">;</span>
-<span class="hl line">   28 </span>            <span class="hl sym">}</span>
-<span class="hl line">   29 </span>        <span class="hl kwa">if</span> <span class="hl sym">(!</span>swapped<span class="hl sym">)</span>
-<span class="hl line">   30 </span>            <span class="hl kwa">return</span><span class="hl sym">;</span>
-<span class="hl line">   31 </span>    <span class="hl sym">}</span>
-<span class="hl line">   32 </span><span class="hl sym">}</span>
-<span class="hl line">   33 </span>
-<span class="hl line">   34 </span><span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl sym">(</span><span class="hl kwb">void</span><span class="hl sym">)</span>
-<span class="hl line">   35 </span><span class="hl sym">{</span>
-<span class="hl line">   36 </span>    mylib<span class="hl sym">::</span>date dates<span class="hl sym">[] = {</span>mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1912</span><span class="hl sym">,</span><span class="hl num">6</span><span class="hl sym">,</span><span class="hl num">23</span><span class="hl sym">),</span> mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1941</span><span class="hl sym">,</span><span class="hl num">9</span><span class="hl sym">,</span><span class="hl num">9</span><span class="hl sym">),</span>
-<span class="hl line">   37 </span>                           mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1943</span><span class="hl sym">,</span><span class="hl num">2</span><span class="hl sym">,</span><span class="hl num">4</span><span class="hl sym">),</span> mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1931</span><span class="hl sym">,</span><span class="hl num">10</span><span class="hl sym">,</span><span class="hl num">12</span><span class="hl sym">),</span>
-<span class="hl line">   38 </span>                           mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1926</span><span class="hl sym">,</span><span class="hl num">8</span><span class="hl sym">,</span><span class="hl num">27</span><span class="hl sym">)};</span>
-<span class="hl line">   39 </span>    <span class="hl kwb">size_t</span> ndates <span class="hl sym">=</span> <span class="hl kwa">sizeof</span> dates <span class="hl sym">/</span> <span class="hl kwa">sizeof</span> dates<span class="hl sym">[</span><span class="hl num">0</span><span class="hl sym">];</span>
-<span class="hl line">   40 </span>    <span class="hl kwd">bubble_sort</span><span class="hl sym">(</span>dates<span class="hl sym">,</span> ndates<span class="hl sym">);</span>
-<span class="hl line">   41 </span>    std<span class="hl sym">::</span>ostream_iterator<span class="hl sym">&lt;</span>mylib<span class="hl sym">::</span>date<span class="hl sym">&gt;</span> <span class="hl kwd">out_it</span><span class="hl sym">(</span>std<span class="hl sym">::</span>cout<span class="hl sym">,</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">);</span>
-<span class="hl line">   42 </span>    std<span class="hl sym">::</span><span class="hl kwd">copy</span><span class="hl sym">(</span>dates<span class="hl sym">,</span> dates <span class="hl sym">+</span> ndates<span class="hl sym">,</span> out_it<span class="hl sym">);</span>
-<span class="hl line">   43 </span><span class="hl sym">}</span>
+<span class="hl line">   15 </span>
+<span class="hl line">   16 </span><span class="hl sym">}</span>
+<span class="hl line">   17 </span>
+<span class="hl line">   18 </span><span class="hl kwc">template</span> <span class="hl sym">&lt;</span>typename T<span class="hl sym">&gt;</span>
+<span class="hl line">   19 </span><span class="hl kwb">void</span> <span class="hl kwd">bubble_sort</span><span class="hl sym">(</span>T <span class="hl sym">*</span> base<span class="hl sym">,</span> <span class="hl kwb">size_t</span> number_of_elements<span class="hl sym">)</span>
+<span class="hl line">   20 </span><span class="hl sym">{</span>
+<span class="hl line">   21 </span>    <span class="hl kwa">for</span><span class="hl sym">(;;) {</span>
+<span class="hl line">   22 </span>        <span class="hl kwb">bool</span> swapped <span class="hl sym">=</span> <span class="hl kwa">false</span><span class="hl sym">;</span>
+<span class="hl line">   23 </span>        <span class="hl kwa">for</span> <span class="hl sym">(</span><span class="hl kwb">size_t</span> i <span class="hl sym">=</span> <span class="hl num">0</span><span class="hl sym">;</span> i <span class="hl sym">&lt;</span> number_of_elements <span class="hl sym">-</span> <span class="hl num">1</span><span class="hl sym">;</span> i<span class="hl sym">++)</span> 
+<span class="hl line">   24 </span>            <span class="hl kwa">if</span> <span class="hl sym">(! (</span>base<span class="hl sym">[</span>i<span class="hl sym">] &lt;</span> base<span class="hl sym">[</span>i<span class="hl sym">+</span><span class="hl num">1</span><span class="hl sym">]) ) {</span>
+<span class="hl line">   25 </span>                T tmp <span class="hl sym">=</span> base<span class="hl sym">[</span>i<span class="hl sym">];</span>
+<span class="hl line">   26 </span>                base<span class="hl sym">[</span>i<span class="hl sym">] =</span> base<span class="hl sym">[</span>i<span class="hl sym">+</span><span class="hl num">1</span><span class="hl sym">];</span>
+<span class="hl line">   27 </span>                base<span class="hl sym">[</span>i<span class="hl sym">+</span><span class="hl num">1</span><span class="hl sym">] =</span> tmp<span class="hl sym">;</span>
+<span class="hl line">   28 </span>                swapped <span class="hl sym">=</span> <span class="hl kwa">true</span><span class="hl sym">;</span>
+<span class="hl line">   29 </span>            <span class="hl sym">}</span>
+<span class="hl line">   30 </span>        <span class="hl kwa">if</span> <span class="hl sym">(!</span>swapped<span class="hl sym">)</span>
+<span class="hl line">   31 </span>            <span class="hl kwa">return</span><span class="hl sym">;</span>
+<span class="hl line">   32 </span>    <span class="hl sym">}</span>
+<span class="hl line">   33 </span><span class="hl sym">}</span>
+<span class="hl line">   34 </span>
+<span class="hl line">   35 </span><span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl sym">(</span><span class="hl kwb">void</span><span class="hl sym">)</span>
+<span class="hl line">   36 </span><span class="hl sym">{</span>
+<span class="hl line">   37 </span>    mylib<span class="hl sym">::</span>date dates<span class="hl sym">[] = {</span>mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1912</span><span class="hl sym">,</span><span class="hl num">6</span><span class="hl sym">,</span><span class="hl num">23</span><span class="hl sym">),</span> mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1941</span><span class="hl sym">,</span><span class="hl num">9</span><span class="hl sym">,</span><span class="hl num">9</span><span class="hl sym">),</span>
+<span class="hl line">   38 </span>                           mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1943</span><span class="hl sym">,</span><span class="hl num">2</span><span class="hl sym">,</span><span class="hl num">4</span><span class="hl sym">),</span> mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1931</span><span class="hl sym">,</span><span class="hl num">10</span><span class="hl sym">,</span><span class="hl num">12</span><span class="hl sym">),</span>
+<span class="hl line">   39 </span>                           mylib<span class="hl sym">::</span><span class="hl kwd">date</span><span class="hl sym">(</span><span class="hl num">1926</span><span class="hl sym">,</span><span class="hl num">8</span><span class="hl sym">,</span><span class="hl num">27</span><span class="hl sym">)};</span>
+<span class="hl line">   40 </span>    <span class="hl kwb">size_t</span> ndates <span class="hl sym">=</span> <span class="hl kwa">sizeof</span> dates <span class="hl sym">/</span> <span class="hl kwa">sizeof</span> dates<span class="hl sym">[</span><span class="hl num">0</span><span class="hl sym">];</span>
+<span class="hl line">   41 </span>    <span class="hl kwd">bubble_sort</span><span class="hl sym">(</span>dates<span class="hl sym">,</span> ndates<span class="hl sym">);</span>
+<span class="hl line">   42 </span>    std<span class="hl sym">::</span>ostream_iterator<span class="hl sym">&lt;</span>mylib<span class="hl sym">::</span>date<span class="hl sym">&gt;</span> <span class="hl kwd">out_it</span><span class="hl sym">(</span>std<span class="hl sym">::</span>cout<span class="hl sym">,</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   43 </span>    std<span class="hl sym">::</span><span class="hl kwd">copy</span><span class="hl sym">(</span>dates<span class="hl sym">,</span> dates <span class="hl sym">+</span> ndates<span class="hl sym">,</span> out_it<span class="hl sym">);</span>
+<span class="hl line">   44 </span><span class="hl sym">}</span>
 </pre>
 </body>
 </html>

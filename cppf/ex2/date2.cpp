@@ -1,31 +1,35 @@
 #include "date2.hpp"
 #include "xyzlib.h"
 
-bool mylib::date::is_valid() const
-{
-    return this->month >= 1 && this->month <= 12
-        && this->day >= 1
-        && this->day <= xyzlib_days_in_month(this->year, this->month);
-}
+namespace mylib {
+    
+    bool date::is_valid() const
+    {
+        return this->month >= 1 && this->month <= 12
+            && this->day >= 1
+            && this->day <= xyzlib_days_in_month(this->year, this->month);
+    }
         
-void mylib::date::offset(int days)
-{
-    int day_number = xyzlib_to_day_number(this->year, this->month, this->day);
-    int new_day_number = day_number + days;
-    xyzlib_to_ymd(new_day_number, &this->year, &this->month, &this->day);
-}
+    void date::offset(int days)
+    {
+        int day_number = xyzlib_to_day_number(this->year, this->month, this->day);
+        int new_day_number = day_number + days;
+        xyzlib_to_ymd(new_day_number, &this->year, &this->month, &this->day);
+    }
 
-int mylib::date::diff(const mylib::date & other) const
-{
-    int day_number = xyzlib_to_day_number(this->year, this->month, this->day);
-    int other_day_number = xyzlib_to_day_number(
-        other.year, other.month, other.day);
-    return day_number - other_day_number;
-}
+    int date::diff(const mylib::date & other) const
+    {
+        int day_number = xyzlib_to_day_number(this->year, this->month, this->day);
+        int other_day_number = xyzlib_to_day_number(
+            other.year, other.month, other.day);
+        return day_number - other_day_number;
+    }
 
-bool mylib::date::is_equal(const mylib::date & other) const
-{
-    return this->year == other.year &&
-        this->month == other.month &&
-        this->day == other.day;
+    bool date::is_equal(const mylib::date & other) const
+    {
+        return this->year == other.year &&
+            this->month == other.month &&
+            this->day == other.day;
+    }
+
 }

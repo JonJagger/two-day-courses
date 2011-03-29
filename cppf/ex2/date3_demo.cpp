@@ -1,7 +1,8 @@
 #include "date3.hpp"
 #include <iostream>
 
-namespace mylib {
+namespace mylib
+{
     std::ostream & operator<<(std::ostream & out, const date & date)
     {
         return out << date.year() << "/" << date.month() << "/" << date.day();
