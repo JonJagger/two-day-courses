@@ -9,7 +9,8 @@ namespace mylib {
 
     class directory_entry {
     public:
-        virtual void accept(directory_entry_visitor *) = 0;
+        virtual void accept(directory_entry_visitor &) = 0;
+
         virtual std::string name() const = 0;
     protected:
         ~directory_entry() {}

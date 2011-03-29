@@ -9,7 +9,7 @@ namespace mylib {
     class file : public directory_entry {
     public:
         explicit file(const std::string & name);
-        void accept(directory_entry_visitor * visitor);
+        void accept(directory_entry_visitor & visitor);
         std::string name() const;
     private:
         std::string name_;

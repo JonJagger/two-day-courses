@@ -13,9 +13,9 @@ namespace mylib {
     {
     public:
         explicit directory(const std::string & name);
-        void accept(directory_entry_visitor * visitor);
+        void accept(directory_entry_visitor & visitor);
         std::string name() const;
-        void add(directory_entry * entry);
+        void add(directory_entry & entry);
     private:
         typedef std::vector<directory_entry*> container;
         std::string name_;

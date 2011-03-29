@@ -5,9 +5,9 @@ mylib::file::file(const std::string & name) : name_(name)
 {
 }
 
-void mylib::file::accept(directory_entry_visitor * visitor)
+void mylib::file::accept(directory_entry_visitor & visitor)
 {
-    visitor->visit(this);
+    visitor.visit(*this);
 }
 
 std::string mylib::file::name() const
