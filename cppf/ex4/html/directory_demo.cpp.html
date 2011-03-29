@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>directory_demo.cpp</title>
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl line">    1 </span><span class="hl dir">#include</span> <span class="hl dstr">&quot;directory.hpp&quot;</span><span class="hl dir"></span>
+<span class="hl line">    2 </span><span class="hl dir">#include</span> <span class="hl dstr">&quot;file.hpp&quot;</span><span class="hl dir"></span>
+<span class="hl line">    3 </span><span class="hl dir">#include</span> <span class="hl dstr">&quot;directory_entry_visitor.hpp&quot;</span><span class="hl dir"></span>
+<span class="hl line">    4 </span><span class="hl dir">#include &lt;string&gt;</span>
+<span class="hl line">    5 </span><span class="hl dir">#include &lt;iostream&gt;</span>
+<span class="hl line">    6 </span>
+<span class="hl line">    7 </span><span class="hl kwc">class</span> my_directory_printer <span class="hl sym">:</span> <span class="hl kwc">public</span> mylib<span class="hl sym">::</span>directory_entry_visitor
+<span class="hl line">    8 </span><span class="hl sym">{</span>
+<span class="hl line">    9 </span><span class="hl kwc">public</span><span class="hl sym">:</span>
+<span class="hl line">   10 </span>    <span class="hl kwc">explicit</span> <span class="hl kwd">my_directory_printer</span><span class="hl sym">(</span><span class="hl kwb">int</span> indent_size <span class="hl sym">=</span> <span class="hl num">4</span><span class="hl sym">) :</span> <span class="hl kwd">indent_size</span><span class="hl sym">(</span>indent_size<span class="hl sym">),</span> <span class="hl kwd">indent</span><span class="hl sym">() {}</span>
+<span class="hl line">   11 </span>    <span class="hl kwb">void</span> <span class="hl kwd">visit</span><span class="hl sym">(</span>mylib<span class="hl sym">::</span>directory <span class="hl sym">&amp;</span> entry<span class="hl sym">);</span>
+<span class="hl line">   12 </span>    <span class="hl kwb">void</span> <span class="hl kwd">leave</span><span class="hl sym">(</span>mylib<span class="hl sym">::</span>directory <span class="hl sym">&amp;</span> entry<span class="hl sym">);</span>
+<span class="hl line">   13 </span>    <span class="hl kwb">void</span> <span class="hl kwd">visit</span><span class="hl sym">(</span>mylib<span class="hl sym">::</span>file <span class="hl sym">&amp;</span> entry<span class="hl sym">);</span>
+<span class="hl line">   14 </span><span class="hl kwc">private</span><span class="hl sym">:</span>
+<span class="hl line">   15 </span>    <span class="hl kwb">int</span> indent_size<span class="hl sym">;</span>
+<span class="hl line">   16 </span>    <span class="hl kwb">int</span> indent<span class="hl sym">;</span>
+<span class="hl line">   17 </span><span class="hl sym">};</span>
+<span class="hl line">   18 </span>
+<span class="hl line">   19 </span><span class="hl kwb">void</span> my_directory_printer<span class="hl sym">::</span><span class="hl kwd">visit</span><span class="hl sym">(</span>mylib<span class="hl sym">::</span>directory <span class="hl sym">&amp;</span> entry<span class="hl sym">)</span>
+<span class="hl line">   20 </span><span class="hl sym">{</span>
+<span class="hl line">   21 </span>    <span class="hl kwb">const</span> std<span class="hl sym">::</span>string <span class="hl kwd">prefix</span><span class="hl sym">(</span>indent<span class="hl sym">,</span> <span class="hl str">' '</span><span class="hl sym">);</span>
+<span class="hl line">   22 </span>    std<span class="hl sym">::</span>cout <span class="hl sym">&lt;&lt;</span> prefix <span class="hl sym">&lt;&lt;</span> entry<span class="hl sym">.</span><span class="hl kwd">name</span><span class="hl sym">() &lt;&lt;</span> <span class="hl str">&quot;/&quot;</span> <span class="hl sym">&lt;&lt;</span> std<span class="hl sym">::</span>endl<span class="hl sym">;</span>
+<span class="hl line">   23 </span>    indent <span class="hl sym">+=</span> indent_size<span class="hl sym">;</span>
+<span class="hl line">   24 </span><span class="hl sym">}</span>
+<span class="hl line">   25 </span>
+<span class="hl line">   26 </span><span class="hl kwb">void</span> my_directory_printer<span class="hl sym">::</span><span class="hl kwd">leave</span><span class="hl sym">(</span>mylib<span class="hl sym">::</span>directory <span class="hl sym">&amp;)</span>
+<span class="hl line">   27 </span><span class="hl sym">{</span>
+<span class="hl line">   28 </span>    indent <span class="hl sym">-=</span> indent_size<span class="hl sym">;</span>
+<span class="hl line">   29 </span><span class="hl sym">}</span>
+<span class="hl line">   30 </span>
+<span class="hl line">   31 </span><span class="hl kwb">void</span> my_directory_printer<span class="hl sym">::</span><span class="hl kwd">visit</span><span class="hl sym">(</span>mylib<span class="hl sym">::</span>file <span class="hl sym">&amp;</span> entry<span class="hl sym">)</span>
+<span class="hl line">   32 </span><span class="hl sym">{</span>
+<span class="hl line">   33 </span>    <span class="hl kwb">const</span> std<span class="hl sym">::</span>string <span class="hl kwd">prefix</span><span class="hl sym">(</span>indent<span class="hl sym">,</span> <span class="hl str">' '</span><span class="hl sym">);</span>
+<span class="hl line">   34 </span>    std<span class="hl sym">::</span>cout <span class="hl sym">&lt;&lt;</span> prefix <span class="hl sym">&lt;&lt;</span> entry<span class="hl sym">.</span><span class="hl kwd">name</span><span class="hl sym">() &lt;&lt;</span> std<span class="hl sym">::</span>endl<span class="hl sym">;</span>
+<span class="hl line">   35 </span><span class="hl sym">}</span>
+<span class="hl line">   36 </span>
+<span class="hl line">   37 </span><span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl sym">()</span>
+<span class="hl line">   38 </span><span class="hl sym">{</span>
+<span class="hl line">   39 </span>    mylib<span class="hl sym">::</span>directory <span class="hl kwd">root</span><span class="hl sym">(</span><span class="hl str">&quot;root&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   40 </span>    mylib<span class="hl sym">::</span>file <span class="hl kwd">foo</span><span class="hl sym">(</span><span class="hl str">&quot;foo&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   41 </span>    mylib<span class="hl sym">::</span>file <span class="hl kwd">bar</span><span class="hl sym">(</span><span class="hl str">&quot;bar&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   42 </span>    mylib<span class="hl sym">::</span>directory <span class="hl kwd">gaz</span><span class="hl sym">(</span><span class="hl str">&quot;gaz&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   43 </span>    mylib<span class="hl sym">::</span>file <span class="hl kwd">boz</span><span class="hl sym">(</span><span class="hl str">&quot;boz&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   44 </span>    mylib<span class="hl sym">::</span>file <span class="hl kwd">boo</span><span class="hl sym">(</span><span class="hl str">&quot;boo&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   45 </span>    mylib<span class="hl sym">::</span>file <span class="hl kwd">goo</span><span class="hl sym">(</span><span class="hl str">&quot;goo&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   46 </span>    
+<span class="hl line">   47 </span>    root<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>foo<span class="hl sym">);</span>
+<span class="hl line">   48 </span>    root<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>bar<span class="hl sym">);</span>
+<span class="hl line">   49 </span>    root<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>gaz<span class="hl sym">);</span>
+<span class="hl line">   50 </span>    root<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>boz<span class="hl sym">);</span>
+<span class="hl line">   51 </span>    gaz<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>boo<span class="hl sym">);</span>
+<span class="hl line">   52 </span>    gaz<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>goo<span class="hl sym">);</span>
+<span class="hl line">   53 </span>
+<span class="hl line">   54 </span>    my_directory_printer <span class="hl kwd">printer</span><span class="hl sym">(</span><span class="hl num">4</span><span class="hl sym">);</span>
+<span class="hl line">   55 </span>    root<span class="hl sym">.</span><span class="hl kwd">accept</span><span class="hl sym">(</span>printer<span class="hl sym">);</span>
+<span class="hl line">   56 </span><span class="hl sym">}</span>
+</pre>
+</body>
+</html>
+<!--HTML generated by highlight 2.16, http://www.andre-simon.de/-->
