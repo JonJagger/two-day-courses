@@ -39,6 +39,12 @@ private:
 #include <algorithm>
 #include <functional>
 
+typedef std::pair<int,int> my_pair;
+
+bool is_straight(const std::vector<my_pair> & counts)
+{
+    return counts[0].second == counts[4].second + 4;
+}
 
 int poker_hand::rank() const
 {
@@ -50,34 +56,24 @@ int poker_hand::rank() const
         suits[cards[at].suit]++;
     }
 
-    typedef std::pair<int,int> my_pair;
     std::vector<my_pair> counts;
     for(size_t at = 0; at != 5; at++)
         counts.push_back(
-            std::make_pair(
-                dups[cards[at].pips], 
-                cards[at].pips));
+            std::make_pair(dups[cards[at].pips], cards[at].pips)
+        );
     std::sort(counts.begin(), counts.end(), std::greater<my_pair>());
 
+    switch (counts[0].first)
+    {
+    case 4: return four_of_a_kind;
+    case 3: return counts[3].first == 2 ? full_house : three_of_a_kind;
+    case 2: return counts[2].first == 2 ? two_pair : pair;
+    }
 
-    if (dups.size() == 4 && counts[0].first == 2)
-        return pair;
-    if (dups.size() == 3 && counts[0].first == 2 && counts[2].first == 2)
-        return two_pair;
-    if (dups.size() == 3 && counts[0].first == 3)
-        return three_of_a_kind;
-    if (dups.size() == 2 && counts[0].first == 3)
-        return full_house;
-    if (dups.size() == 2 && counts[0].first == 4)
-        return four_of_a_kind;
-    if (suits.size() == 1 && dups.size() == 5 && counts[0].second == counts[4].second + 4)
-        return straight_flush;
-    if (suits.size() == 1 && dups.size() == 5)
-        return flush;
-    if (suits.size() != 1 && dups.size() == 5 && counts[0].second == counts[4].second + 4)
-        return straight;
-    
-    return high_card;
+    if (suits.size() == 1)
+        return is_straight(counts) ? straight_flush : flush;
+    else 
+        return is_straight(counts) ? straight : high_card;
 }
 
 int main(void)
@@ -108,5 +104,10 @@ int main(void)
 
     poker_hand h9(card(5,hearts), card(6,hearts), card(7,diamonds), card(8,hearts), card(3,hearts));
     assert(h9.rank() == high_card);
-}
 
+    const int jack = 11, queen = 12, king = 13, ace = 14;
+
+    poker_hand h10(card(ace,hearts), card(king,hearts), card(queen,hearts), card(jack,hearts), card(10,hearts));
+    assert(h10.rank() == straight_flush);
+
+}
