@@ -69,9 +69,8 @@ static int compare(const void * a, const void * b)
     
 int main(int argc, char * argv[])
 {
-    size_t i;
     qsort(argv, argc, sizeof *argv, compare);
-    for (i=0; i&lt;argc; i++)
+    for (int i = 0; i &lt; argc; i++)
         puts(argv[i]);
     return 0;
 }
@@ -79,6 +78,7 @@ int main(int argc, char * argv[])
 vs
 <pre>
 // argsort2.cpp - sort and print arguments
+#include &lt;algorithm&gt;
 #include &lt;iostream&gt;
 #include &lt;iterator&gt;
 #include &lt;string&gt;

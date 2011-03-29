@@ -9,9 +9,8 @@ static int compare(const void * a, const void * b)
     
 int main(int argc, char * argv[])
 {
-    size_t i;
     qsort(argv, argc, sizeof *argv, compare);
-    for (i=0; i<argc; i++)
+    for (int i = 0; i < argc; i++)
         puts(argv[i]);
     return 0;
 }
