@@ -12,7 +12,7 @@ namespace mylib {
         virtual void leave(directory &) = 0;
         virtual void visit(file &) = 0;
     protected:
-        ~directory_entry_visitor() {}
+        virtual ~directory_entry_visitor() {}
     };
 
 }

@@ -1,12 +1,11 @@
-#ifndef XYZLIB_INCLUDED
-#define XYZLIB_INCLUDED
+#include "xyzlib.h"
 
-static bool xyzlib_is_leap_year(int year)
+bool xyzlib_is_leap_year(int year)
 {
     return (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0));
 }
 
-static int xyzlib_days_in_month(int year, int month)
+int xyzlib_days_in_month(int year, int month)
 {
     switch (month) {
     case 2:
@@ -17,7 +16,7 @@ static int xyzlib_days_in_month(int year, int month)
     return 31;
 }
 
-static int xyzlib_to_day_number(int year, int month, int day)
+int xyzlib_to_day_number(int year, int month, int day)
 {
     int a = (14-month)/12;
     int y = year + 4800 - a;
@@ -26,7 +25,7 @@ static int xyzlib_to_day_number(int year, int month, int day)
     return d;
 }
 
-static void xyzlib_to_ymd(int day_number, int * year, int * month, int * day)
+void xyzlib_to_ymd(int day_number, int * year, int * month, int * day)
 {
     int a = day_number + 32044;
     int b = (4*a + 3)/146097;
@@ -38,5 +37,3 @@ static void xyzlib_to_ymd(int day_number, int * year, int * month, int * day)
     *month = m + 3 - 12 * (m/10);
     *day = e - ((153*m + 2)/5) + 1;
 }
-
-#endif

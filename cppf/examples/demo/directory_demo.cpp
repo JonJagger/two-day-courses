@@ -1,14 +1,15 @@
-#include "directory.hpp"
-#include "file.hpp"
-#include "directory_entry_visitor.hpp"
-#include "date.hpp"
-
-#include <string>
+#include "../mylib/directory_entry_visitor.hpp"
+#include "../mylib/file.hpp"
+#include "../mylib/directory.hpp"
+#include <cassert>
 #include <iostream>
 
-std::ostream & operator<<(std::ostream & out, const mylib::date & date)
+namespace mylib
 {
-    return out << date.year() << "/" << date.month() << "/" << date.day();
+    std::ostream & operator<<(std::ostream & out, const date & d)
+    {
+        return out << d.year() << "/" << d.month() << "/" << d.day();
+    }
 }
 
 class my_directory_printer : public mylib::directory_entry_visitor
@@ -26,7 +27,7 @@ private:
 void my_directory_printer::visit(mylib::directory & entry)
 {
     const std::string prefix(indent, ' ');
-    std::cout << prefix << entry.name() << "/"
+    std::cout << prefix << entry.name() << '/'
               << " [" << entry.date() << "]" << std::endl;
     indent += indent_size;
 }
@@ -43,22 +44,18 @@ void my_directory_printer::visit(mylib::file & entry)
               << " [" << entry.date() << "]" << std::endl;
 }
 
+
 int main()
 {
-    mylib::directory root("root", mylib::date(2011,3,29));
-    mylib::file foo("foo", mylib::date(2011,2,21));
-    mylib::file bar("bar", mylib::date(2007,1,3));
-    mylib::directory gaz("gaz", mylib::date(2001,4,5));
-    mylib::file boz("boz", mylib::date(1987,12,10));
-    mylib::file boo("boo", mylib::date(1998,10,9));
-    mylib::file goo("goo", mylib::date(1976,5,6));
-    
-    root.add(foo);
-    root.add(bar);
-    root.add(gaz);
-    root.add(boz);
-    gaz.add(boo);
-    gaz.add(goo);
+    //mylib::directory root = mylib::directory("root");
+    mylib::root_dir root;
+    root.create_file("foo");
+    root.create_file("bar");
+    mylib::directory & gaz = root.create_directory("gaz");
+    gaz.create_file("boo");
+    gaz.create_file("far");
+    mylib::file & gii = root.create_file("gii");
+    gii.set_date(mylib::date(2011,3,14));
 
     my_directory_printer printer(4);
     root.accept(printer);
