@@ -13,7 +13,9 @@ Files:
 
   numgen/  - Homework after Day 1 (approx 1 hour)
     instruction.txt 
-    numgen0.py  - a model answer to the exercise
+    numgen0.py  - model answer, a script-like approach
+    numgen1.py  - model answer, a functional approach
+    numgen2.py  - model answer, demonstrating argparse and doctest
 
   isbn/    - Day 2, afternoon exercise (approx 1 hour)
     instruction.txt
