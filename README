@@ -1,15 +1,22 @@
-Two day courses on software enginneering for professional programmers
+Two day courses for professional programmers
 
 cf - C Foundation course
 ca - C Advanced course
 cppf - C++ Foundation course
 pf - Python Foundation course
 
-Major contributers:
+Major contributors:
   Jon Jagger
   Kevlin Henney
   Olve Maudal
-  
 
+License:
 
+This work is licensed under a Creative Commons Attribution 4.0
+International License. 
 
+Feel free to use this material for whatever you want. In particular we
+encourage you to derive from this material and use it to teach your
+own course on these topics. We appreciate feedback and we are happy to
+make changes to the course material if you have suggestions for
+improvements.
