@@ -1,0 +1,19 @@
+This is a two day course in Python programming aimed at professional
+programmers. We assume the students already know some Python, but that
+they want to establish a solid understanding of the language to
+further develop their skills.
+
+Files:
+
+  Python Foundation.pptx - the master for the slides
+  Python Foundation.pdf - a saved PDF copy of the master
+
+  yatzy/   - Day 1, lunch excercise (approx 1 hour)
+    instruction.txt 
+
+  numgen/  - Homework after Day 1 (approx 1 hour)
+    instruction.txt 
+    numgen0.py  - a model answer to the exercise
+
+  isbn/    - Day 2, afternoon exercise (approx 1 hour)
+    instruction.txt

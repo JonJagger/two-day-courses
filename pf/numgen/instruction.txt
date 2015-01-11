@@ -1,0 +1,95 @@
+numgen — Phone number generator
+
+Write a small command line tool that reads a data file (numgen.dat)
+containing existing numbers, generate a new unique random 8-digit
+number and add it to the data file. Consider also printing it out to
+the console. If you give the program a numeric argument, it should
+append that many new numbers to the data file.
+
+It is important that the new numbers generated are unique, but also
+that they are reachable: a number is unreachable if there exists
+another number in the database that is a leading substring of the
+number. E.g., if 911 exists in the database, 91134345 would not be
+valid number to add because when someone tries to dial the 8-digit
+number you will reach 911 first. You should assume that the order of
+numbers in the data file is significant, so you should only append new
+numbers to it. A naïve, but completely acceptable approach, is to
+iterate over every existing number and make sure it is neither the
+same nor a leading substring of a candidate number you have generated.
+
+When you are done with the initial version, consider one of the options.
+
+NB: You should find relevant info and code snippets in the Python
+Codebook and https://docs.python.org/3/index.html.
+
+Usage example
+  $ cat numgen.dat
+  911
+  112
+  999
+  45783349
+  56778856
+  $ python numgen.py
+  88533934
+  $ python numgen.py 4
+  65899323
+  89798871
+  01334908
+  73344345
+  $ cat numgen.dat
+  911
+  112
+  999
+  45783349
+  56778856
+  88533934
+  65899323
+  89798871
+  01334908
+  73344345
+
+Option 1: Make numget more like a command-line utility
+
+Use module argparse to parse the command line (see documentation) and
+try to make it look like a professional and solid tool that others
+might want to use. E.g., something like this:
+
+  $ python numgen.py
+  usage: numgen.py [-h] [-n] [n]
+  Create random, unique and reachable 8-digit phone numbers.
+
+  positional arguments:
+    n               how many numbers to generate (default is 1)
+
+  optional arguments:
+    -h, --help      show this help message and exit
+    -n, --dry-run   do not actually update the database
+    --db file       specify data file (default is numgen.dat)
+
+If on a Unix-like environment, make it look and behave like a Unix
+command: add #!/usr/bin/env python3 as first line in your script, then
+make the file executable (chmod 0755 numgen.py) and remove the .py
+suffix (mv numgen.py numgen).
+
+Option 2: Improve performance
+
+How long does it take to execute numgen for 1000, 10000 and 100000 new
+numbers? How far can you improve the code so it runs faster?
+Experiment with different techniques.
+
+Option 3: Guarantee termination
+
+What happens when the database fills up? If you ask to generate more
+numbers than are available, what does numgen do?
+
+Ensure that it does something sensible, such as stopping once it
+reaches a limit - either database full or after too many failed
+attempts to generate a new number - or refusing a request to create
+more numbers than are available.
+
+Option 4: Alternative implementations under different constraints
+
+If you changed one of the basic constraints of the problem, such as
+using 5- or 6-digit rather than 8-digit numbers, what alternative
+implementations would be practical? Experiment with different
+techniques.

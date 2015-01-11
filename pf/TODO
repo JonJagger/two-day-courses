@@ -1,0 +1,16 @@
+Here are some TODO issues:
+
+- fix missing numbers in the numgen usage example in the slides
+
+- add model answers for yatzy and isbn
+
+- add more model answers for numgen, eg a structured, a functional,
+  and an object oriented solution.
+
+- add a suggestion for a detailed course agenda
+
+- add slides for some of the things that is demonstrated directly in
+  the interpreter during the course.
+
+- consider what we can take out of this course and move into a similar
+  two day Python Advanced course.
