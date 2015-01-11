@@ -25,11 +25,10 @@ def read_numbers_from(filename):
 
 
 def append_numbers_to(numbers, filename):
-    outstr = ''.join(number + '\n' for number in numbers)
+    printing = ''.join(number + '\n' for number in numbers)
     with open(filename, 'a') as sink:
-        sink.write(outstr)
-    print(outstr.strip())
-
+        print(printing, end='', file=sink)
+    print(printing, end='')
 
 def generate_new_numbers(requested, existing_numbers, digits):
     existing_numbers = set(existing_numbers)
