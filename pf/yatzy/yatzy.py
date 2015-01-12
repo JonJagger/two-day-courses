@@ -91,5 +91,6 @@ def score_four_of_a_kind(dice):
 
 
 def score_full_house(dice):
-    parts = _score_n_of_a_kind(dice, 2), score_three_of_a_kind(dice)
+    score_two_of_a_kind = lambda dice: _score_n_of_a_kind(dice, 2)
+    parts = score_two_of_a_kind(dice), score_three_of_a_kind(dice)
     return sum(parts) if all(parts) else 0
