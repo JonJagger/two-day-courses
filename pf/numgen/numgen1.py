@@ -19,6 +19,7 @@ def main():
     new_numbers = generate_new_numbers(how_many, existing_numbers, digits)
     append_numbers_to(new_numbers, output)
 
+
 def read_numbers_from(filename):
     with open(filename) as source:
         return [line.strip() for line in source]
@@ -29,6 +30,7 @@ def append_numbers_to(numbers, filename):
     with open(filename, 'a') as sink:
         print(printing, end='', file=sink)
     print(printing, end='')
+
 
 def generate_new_numbers(requested, existing_numbers, digits):
     existing_numbers = set(existing_numbers)
