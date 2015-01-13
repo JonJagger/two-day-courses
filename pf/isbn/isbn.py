@@ -1,4 +1,11 @@
+#
+# isbn.py - model answer for the isbn exercise
+#
+
+
 def _is_valid_isbn13(str):
+    if len(str) != 13:
+        return False
     if not str.isdigit():
         return False
     *digits, checkdigit = map(int, str)
@@ -7,21 +14,17 @@ def _is_valid_isbn13(str):
 
 
 def _is_valid_isbn10(str):
+    if len(str) != 10:
+        return False
     chars = str[0:-1]
     checkchar = str[-1]
     if not chars.isdigit() or checkchar not in set('0123456789X'):
         return False
     res = sum(a*int(b) for a, b in enumerate(chars, 1)) % 11
-    print(checkchar, res)
     if checkchar == 'X':
-        return True if res == 10 else False
-    return True if int(checkchar) == res else False
-
+        return res == 10
+    return int(checkchar) == res
 
 def is_valid_isbn(str):
     str = str.replace(' ', '').replace('-', '')
-    if len(str) == 13:
-        return _is_valid_isbn13(str)
-    elif len(str) == 10:
-        return _is_valid_isbn10(str)
-    return False
+    return _is_valid_isbn13(str) or _is_valid_isbn10(str)
