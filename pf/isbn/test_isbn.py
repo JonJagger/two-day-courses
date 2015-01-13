@@ -2,7 +2,7 @@
 # test_isbn.py - model answer for the isbn exercise
 #
 
-from isbn import *
+from isbn import is_valid_isbn
 import unittest
 
 

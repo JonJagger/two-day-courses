@@ -22,7 +22,7 @@ def score_ones(dice):
 
 
 def score_twos(dice):
-    return sum([d for d in dice if d == 2])
+    return sum(d for d in dice if d == 2)
 
 
 def score_threes(dice):
