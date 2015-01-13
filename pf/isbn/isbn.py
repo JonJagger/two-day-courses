@@ -25,6 +25,7 @@ def _is_valid_isbn10(str):
         return res == 10
     return int(checkchar) == res
 
+
 def is_valid_isbn(str):
     str = str.replace(' ', '').replace('-', '')
     return _is_valid_isbn13(str) or _is_valid_isbn10(str)
