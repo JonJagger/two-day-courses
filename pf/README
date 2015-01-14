@@ -3,19 +3,41 @@ programmers. We assume the students already know some Python, but that
 they want to establish a solid understanding of the language to
 further develop their skills.
 
-Files:
+* Files:
 
   Python Foundation.pptx - the master for the slides
   Python Foundation.pdf - a saved PDF copy of the master
 
   yatzy/   - Day 1, lunch excercise (approx 1 hour)
     instruction.txt 
+    yatzy.py         - a model answer
+    test_yatzy.py    - a model answer
 
   numgen/  - Homework after Day 1 (approx 1 hour)
     instruction.txt 
-    numgen0.py  - model answer, a script-like approach
-    numgen1.py  - model answer, a functional approach
-    numgen2.py  - model answer, demonstrating argparse and doctest
+    numgen.dat  - default data file
+    numgen0.py  - model answer #0, a script-like approach
+    numgen1.py  - model answer #1, a functional approach
+    numgen2.py  - model answer #2, demonstrating argparse and doctest
 
   isbn/    - Day 2, afternoon exercise (approx 1 hour)
     instruction.txt
+    isbn.py       - a model answer
+    test_isbn.py  - a model answer
+    
+* Major contributors:
+
+  Kevlin Henney
+  Olve Maudal
+
+* License:
+
+This work is licensed under a Creative Commons Attribution 4.0
+International License. 
+
+Feel free to use this material for whatever you want. In particular we
+encourage you to derive from this material and use it to teach your
+own course on these topics. We appreciate feedback and we are happy to
+make changes to the course material if you have suggestions for
+improvements. Also, if you need some advice on how to teach courses
+like this, feel free to contact us.
