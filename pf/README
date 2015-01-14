@@ -18,7 +18,7 @@ covered in this part of the course.
   Python Foundation.pptx - the master for the slides
   Python Foundation.pdf - a saved PDF copy of the master
 
-  yatzy/   - Day 1, lunch excercise (approx 1 hour)
+  yatzy/   - Day 1, lunch exercise (approx 1 hour)
     instruction.txt 
     yatzy.py         - a model answer
     test_yatzy.py    - a model answer
