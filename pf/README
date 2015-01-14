@@ -1,7 +1,17 @@
+* Python Foundation, a two day course for professional programmers
+
 This is a two day course in Python programming aimed at professional
-programmers. We assume the students already know some Python, but that
-they want to establish a solid understanding of the language to
+programmers. The course material provided here is indended to be used
+by _teachers_ of the language, but individual learners might find some
+of this useful as well. 
+
+The course assume the students already know some Python, but that they
+feel a need to establish a solid understanding of the language to
 further develop their skills.
+
+There is an upcoming part II of this course (we will call it Python
+Advanced), so we are trying to be selective on how much is being
+covered in this part of the course.
 
 * Files:
 
@@ -18,7 +28,7 @@ further develop their skills.
     numgen.dat  - default data file
     numgen0.py  - model answer #0, a script-like approach
     numgen1.py  - model answer #1, a functional approach
-    numgen2.py  - model answer #2, demonstrating argparse and doctest
+    numgen2.py  - model answer #2, demo of argparse and doctest
 
   isbn/    - Day 2, afternoon exercise (approx 1 hour)
     instruction.txt
