@@ -38,7 +38,7 @@ modulo 10 of the result again to produce a single digit.
 
 Basic task:
 Create a function that takes a string and returns true
-if that is a valid ISBN-13 and false otherwise.
+if the string is a valid ISBN-13 and false otherwise.
 
 Advanced task:
 Also return true if the string is a valid ISBN-10.

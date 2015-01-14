@@ -1,8 +1,8 @@
 numgen — Phone number generator
 
 Write a small command line tool that reads a data file (numgen.dat)
-containing existing numbers, generate a new unique random 8-digit
-number and add it to the data file. Consider also printing it out to
+containing existing numbers, generates a new unique random 8-digit
+number and adds it to the data file. Consider also printing it out to
 the console. If you give the program a numeric argument, it should
 append that many new numbers to the data file.
 

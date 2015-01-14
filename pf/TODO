@@ -4,8 +4,14 @@ Here are some TODO issues:
 
 - add a suggestion for a detailed course agenda
 
-- add slides for some of the things that is demonstrated directly in
+- add slides for some of the things that are demonstrated directly in
   the interpreter during the course.
 
 - consider what we can take out of this course and move into a similar
   two day Python Advanced course.
+
+- fix the markup on the README so that it renders nicely on github
+
+- fix cyber-dojo isbn instruction ("if that is" -> "if the string is")
+
+- fix cyber-dojo yatzy instruction (new line before "If the roll")
