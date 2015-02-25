@@ -1,0 +1,40 @@
+Exercise 3: Threading and atomics
+
+The C standard includes optional support for threading and atomics.
+
+First make sure you have a C compiler and library that supports
+threading and atomics. (You might want to build and install the latest
+library from musl-libc.org)
+
+* Step 1: sleep demo
+
+Write a small program that counts slowly from 1 to 10
+
+Hint: threads.h, thrd_sleep()
+
+Step 2: thread demo
+
+Write a program that starts 10 threads where each thread prints out a
+unique number between 1 and 10
+
+Hint: thrd_create(), thrd_join()
+
+Step 3: mutex and atomics demo
+
+Here is a function that updates a global counter:
+
+int global_counter = 0;
+
+void increase_counter(void)
+{
+    static mtx_t mymutex;
+    mtx_lock(&mymutex);
+    global_counter++;
+    mtx_unlock(&mymutex);
+}
+
+Try to call this function, say a total of 1000000 times, from 10
+concurrent threads. What might happen if you remove the mutex? What is
+the performance difference when using atomics instead of a mutex?
+
+Hint: stdatomic.h, atomic_int
