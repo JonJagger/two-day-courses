@@ -1,33 +1,26 @@
-#ifndef PHONE_BOOK_H_INCLUDED
-#define PHONE_BOOK_H_INCLUDED
+#ifndef PHONE_BOOK_INCLUDED
+#define PHONE_BOOK_INCLUDED
 
-#include <stddef.h>
 #include <stdbool.h>
-
-#define MAX_PHONE_NUMBER_LEN 12
-#define MAX_PHONE_NAME_LEN 36
-
-struct phone_book_entry {
-    bool in_use;
-    char number[MAX_PHONE_NUMBER_LEN+1];
-    char name[MAX_PHONE_NAME_LEN+1];
-};
-
-typedef struct phone_book_entry phone_book_entry;
-
-struct phone_book {
-    phone_book_entry * base;
-    size_t max_size;
-};
+#include <stddef.h>
 
 typedef struct phone_book phone_book;
 
 phone_book * phone_book_create(size_t max_size);
-size_t phone_book_size(const phone_book * pb);
+void         phone_book_destroy(phone_book *);
 
-void phone_book_destroy(phone_book * pb);
-bool phone_book_add(phone_book * pb, const char * name, const char * number);
+bool phone_book_add(phone_book *, const char * name, const char * number);
+bool phone_book_remove(phone_book *, const char * number);
 
-void phone_book_print_all(const phone_book * pb, void printer(const char *));
+const char * phone_book_find_number(const phone_book *, const char * name);
+const char * phone_book_find_name(const phone_book *, const char * number);
+
+//size_t phone_book_size(const phone_book * pb);
+//bool phone_book_full(const phone_book * pb);
+
+void phone_book_print_by_name(const phone_book *, void print(const char * name, const char * number));
+void phone_book_print_by_number(const phone_book *, void print(const char * name, const char * number));
+
+void phone_book_dump(const phone_book * pb);
 
 #endif
