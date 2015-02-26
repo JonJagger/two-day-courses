@@ -1,0 +1,29 @@
+Exercise 2: Phone Book, part II
+
+Use the sample solution of exercise 1 as your starting point. 
+
+This exercise comprises the following tasks:
+
+a) Make the client responsible for all memory handling
+
+b) Use gcov to observe code coverage 
+
+c) Make sure that attempt to add a number already in the phone book
+   fails (duplicate name is ok)
+
+Extra:
+
+d) Make the phone book searchable
+
+e) You must be able to unit test all behavior, in particular the
+   printing. 
+
+Bonus:
+
+f) When adding a number, make sure that all numbers are "reachable"
+   (avoid numbers that are prefixes of other numbers, eg 9113456
+   together with 911 should be avoided)
+
+Once again - remember to peek at what the other teams do and focus
+on the educational value of the exercise. (We are not aiming to
+sell this phone book... yet).
