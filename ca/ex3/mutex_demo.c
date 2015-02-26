@@ -15,7 +15,7 @@ void increase_counter(void)
 int func(void * arg)
 {
     (void)arg;
-    for (int i=0; i<1000000; i++) 
+    for (int i = 0; i < 1000000; i++) 
         increase_counter();
     return 0;
 }

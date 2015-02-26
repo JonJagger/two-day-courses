@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <threads.h>
@@ -12,8 +13,8 @@ int func(void * arg)
 
 int main(void)
 {
-    size_t n_threads = 20;
-    struct { thrd_t t; int n; int r; } threads[n_threads];
+    enum { n_threads = 10 };
+    struct { thrd_t t; int n; int r; } threads[n_threads] = {};
 
     for (size_t i = 0; i < n_threads; i++) {
         threads[i].n = i;
@@ -28,6 +29,6 @@ int main(void)
             perror("Failed to join thread");
             exit(-1);
         }
-        printf("i = %zu, n = %zu, r = %d\n", i, threads[i].n, threads[i].r);
+        assert( i == threads[i].n && i == threads[i].r );
     }
 }
