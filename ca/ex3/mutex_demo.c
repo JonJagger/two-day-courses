@@ -4,9 +4,10 @@
 
 int global_counter = 0;
 
+mtx_t mymutex;
+
 void increase_counter(void)
 {
-    static mtx_t mymutex;
     mtx_lock(&mymutex);
     global_counter++;
     mtx_unlock(&mymutex);
@@ -25,6 +26,11 @@ int main(void)
     int n_threads = 10;
     thrd_t threads[n_threads];
 
+    if (mtx_init(&mymutex, mtx_plain) != thrd_success) {
+        perror("Failed to init mutex");
+        return -1;
+    }
+    
     for (size_t i = 0; i < n_threads; i++) {
         if (thrd_create(&threads[i], func, NULL) != thrd_success) {
             perror("Failed to create thread");
@@ -38,6 +44,8 @@ int main(void)
             return -1;
         }
     }
+
+    mtx_destroy(&mymutex);
 
     printf("global_counter = %d\n", global_counter);
 }

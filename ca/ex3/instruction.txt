@@ -25,13 +25,16 @@ Here is a function that updates a global counter:
 
 int global_counter = 0;
 
+mtx_t mymutex;
+
 void increase_counter(void)
 {
-    static mtx_t mymutex;
     mtx_lock(&mymutex);
     global_counter++;
     mtx_unlock(&mymutex);
 }
+
+Note: remember to mtx_init and mtx_destroy before using the mutex
 
 Try to call this function, say a total of 1000000 times, from 10
 concurrent threads. What might happen if you remove the mutex? What is
