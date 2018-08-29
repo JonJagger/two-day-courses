@@ -1,3 +1,6 @@
-TODO:
-- fix "%zd" fmt specifiers in slides, should usually be "%zu"
+
+NEW TOPICS?
+inline functions (6.7.4)
+alignment (6.7.5)
+flexible array member (6.7.2.1)
 
